@@ -1,3 +1,7 @@
+'use strict';
+const cssOptions = require('./css.env')
+const devServer = require('./dev-server')
+
 module.exports = {
   // 生产环境
   build: {
@@ -24,7 +28,10 @@ module.exports = {
     // 是否设置 link script 标签上启用 SRI
     integrity: false,
     // 参数会通过 webpack-merge 合并到最终配置里
-    configureWebpack: {}
+    configureWebpack: {},
+    // http-proxy-middleware
+    devServer,
+    css: cssOptions.build
   },
 
   // 开发环境
@@ -52,6 +59,9 @@ module.exports = {
     // 是否设置 link script 标签上启用 SRI，如果构建后的文件是部署在 CDN 上的，启用该选项可以提供额外的安全性
     integrity: false,
     // 参数会通过 webpack-merge 合并到最终配置里
-    configureWebpack: {}
+    configureWebpack: {},
+    // http-proxy-middleware
+    devServer,
+    css: cssOptions.dev
   }
 }
