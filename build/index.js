@@ -1,10 +1,12 @@
 'use strict';
 const cssOptions = require('./css.env')
 const devServer = require('./dev-server')
+const pages = require('./base.conf')
 
 module.exports = {
   // 生产环境
   build: {
+    pages: pages,
     // 部署应用包时的基本 URL
     baseUrl: '/',
     // 生产环境构建文件的目录
@@ -31,11 +33,18 @@ module.exports = {
     configureWebpack: {},
     // http-proxy-middleware
     devServer,
-    css: cssOptions.build
+    css: cssOptions.build,
+    chainWebpack: config => {
+      config.resolve.alias
+        .set('@', resolve('src'))
+        .set('@components', resolve('src/components/'))
+        .set('@assets', resolve('src/assets/'))
+    }
   },
 
   // 开发环境
   dev: {
+    pages: pages,
     // 部署应用包时的基本 URL
     baseUrl: '/',
     // 生产环境构建文件的目录
@@ -62,6 +71,12 @@ module.exports = {
     configureWebpack: {},
     // http-proxy-middleware
     devServer,
-    css: cssOptions.dev
+    css: cssOptions.dev,
+    chainWebpack: config => {
+      config.resolve.alias
+        .set('@', resolve('src'))
+        .set('@components', resolve('src/components/'))
+        .set('@assets', resolve('src/assets/'))
+    }
   }
 }
