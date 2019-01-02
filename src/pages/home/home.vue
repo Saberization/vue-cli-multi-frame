@@ -29,7 +29,8 @@ export default {
   mounted() {
     Util.request({
       url: 'http://yapi.demo.qunar.com/mock/32711/getCommonSystem',
-      data: ''
+      data: '',
+      isAutoProxy: false
     })
       .then(function(response) {
         // do something...
