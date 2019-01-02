@@ -1,5 +1,6 @@
 const path = require('path')
 const glob = require('glob')
+const os = require('os')
 
 exports.getMultiFile = function (_path) {
   const entries = []
@@ -31,4 +32,12 @@ exports.getFileName = function (_path) {
   }
 
   return filename
+}
+
+exports.resolve = function (dir) {
+  return path.join(__dirname, '../' + dir)
+}
+
+exports.getNetWorkInterface = function () {
+  return os.networkInterfaces()
 }

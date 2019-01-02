@@ -12,6 +12,8 @@
 </template>
 
 <script>
+  import Util from '@util/'
+
   export default {
     name: 'home',
     data() {
@@ -21,7 +23,7 @@
     },
     methods: {
       openPage() {
-        window.location.href = '/news.html';
+        Util.openPage('news.html')
       }
     }
   }
