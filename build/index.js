@@ -43,6 +43,8 @@ module.exports = {
         .set('@util', resolve('src/util'))
         .set('@components', resolve('src/components'))
         .set('@assets', resolve('src/assets'))
+        .set('@model', resolve('src/model'))
+        .set('@shared', resolve('src/shared'))
     }
   },
 
@@ -82,6 +84,8 @@ module.exports = {
         .set('@util', resolve('src/util'))
         .set('@components', resolve('src/components'))
         .set('@assets', resolve('src/assets'))
+        .set('@model', resolve('src/model'))
+        .set('@shared', resolve('src/shared'))
     }
   }
 }

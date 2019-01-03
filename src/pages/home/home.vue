@@ -6,38 +6,43 @@
 
 <template>
   <div id="container">
-    <h1>{{ msg }}</h1>
+    <h1>{{ toastMsg }}</h1>
+    <button @click="openToast">显示 toast</button>
     <button @click="openPage">跳转到 news.html</button>
+
+    <Toast></Toast>
   </div>
 </template>
 
 <script>
-import Util from "@util/";
+import Util from '@util/'
+import { getScreenApps } from '@/model/'
+import Toast from '@components/toast'
 
 export default {
-  name: "home",
+  name: 'home',
   data() {
     return {
-      msg: "首页"
+      toastMsg: ''
     };
   },
   methods: {
     openPage() {
-      Util.openPage("news.html");
+      Util.openPage('news.html');
+    },
+
+    openToast() {
+      
     }
   },
+  components: {
+    Toast
+  },
   mounted() {
-    Util.request({
-      url: 'http://yapi.demo.qunar.com/mock/32711/getCommonSystem',
-      data: '',
-      isAutoProxy: false
-    })
+    getScreenApps()
       .then(function(response) {
-        // do something...
+        console.log(response);
       })
-      .catch(function(err) {
-        // err msg
-      })
-  }
+  },
 };
 </script>
