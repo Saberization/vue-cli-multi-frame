@@ -34,7 +34,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "vue/no-dupe-keys": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

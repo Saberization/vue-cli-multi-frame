@@ -1,6 +1,3 @@
-<template>
-</template>
-
 <script>
 import 'mint-ui/lib/style.css'
 import { Toast } from 'mint-ui'
@@ -29,11 +26,6 @@ export default {
       type: String,
       default: ''
     }
-  },
-  methods: {
-    showToast(data) {
-      
-    }
-  },
+  }
 }
 </script>
