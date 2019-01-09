@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <div class="showcase-group">
-      <div v-for="(v, i) in components">
+      <div v-for="(v, i) in components" :key="i">
         <div class="sg-title">{{v.title}}</div>
         <cell
           v-for="(_v, _i) in v.category"
+          :key="_i"
           :title="_v.title"
           :icon="_v.icon"
           :is-link="_v.isLink"
@@ -12,6 +13,8 @@
         </cell>
       </div>
     </div>
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -80,7 +83,50 @@ export default {
       }, {
         title: 'CSS Components',
         category: [{
-          
+          title: 'Header',
+          icon: 'header'
+        }, {
+          title: 'Tabbar',
+          icon: 'tabbar'
+        }, {
+          title: 'Navbar',
+          icon: 'navbar'
+        }, {
+          title: 'Button',
+          icon: 'button'
+        }, {
+          title: 'Cell',
+          icon: 'cell'
+        }, {
+          title: 'Cell Swipe',
+          icon: 'cell'
+        }, {
+          title: 'Spinner',
+          icon: 'spinner'
+        }, {
+          title: 'TabContainer',
+          icon: 'panel'
+        }, {
+          title: 'Search',
+          icon: 'searchbar'
+        }]
+      }, {
+        title: 'Form Components',
+        category: [{
+          title: 'Switch',
+          icon: 'switch'
+        }, {
+          title: 'Checklist',
+          icon: 'checklist'
+        }, {
+          title: 'Radio',
+          icon: 'radio'
+        }, {
+          title: 'Field',
+          icon: 'field'
+        }, {
+          title: 'Badge',
+          icon: 'badge'
         }]
       }]
     }
