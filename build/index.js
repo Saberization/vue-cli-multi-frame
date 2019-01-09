@@ -46,6 +46,7 @@ module.exports = {
         .set('@model', resolve('src/model'))
         .set('@shared', resolve('src/shared'))
         .set('@showcase', resolve('src/showcase'))
+        .set('@router', resolve('src/router'))
     }
   },
 
@@ -88,6 +89,7 @@ module.exports = {
         .set('@model', resolve('src/model'))
         .set('@shared', resolve('src/shared'))
         .set('@showcase', resolve('src/showcase'))
+        .set('@router', resolve('src/router'))
     }
   }
 }
