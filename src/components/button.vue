@@ -6,6 +6,9 @@
     :size="size"
     :icon="icon"
   >
+    <span class="mint-button-icon">
+      <slot name="icon"></slot>
+    </span>
     <slot></slot>
   </mt-button>
 </template>

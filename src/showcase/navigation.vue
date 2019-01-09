@@ -1,29 +1,31 @@
 <template>
-  <div class="showcase-group">
-    <div
-      v-for="(v, i) in components"
-      :key="i"
-    >
-      <div class="sg-title">{{v.title}}</div>
-      <cell
-        v-for="(_v, _i) in v.category"
-        :key="_i"
-        :title="_v.title"
-        :icon="_v.icon"
-        :is-link="_v.isLink"
-        :to="_v.to"
+  <div class="container">
+    <div class="showcase-group">
+      <div
+        v-for="(v, i) in components"
+        :key="i"
       >
-      </cell>
+        <div class="sg-title">{{v.title}}</div>
+        <cell
+          v-for="(_v, _i) in v.category"
+          :key="_i"
+          :title="_v.title"
+          :icon="_v.icon"
+          :is-link="_v.isLink"
+          :to="_v.to"
+        >
+        </cell>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import '@assets/css/font.css';
-import Cell from '@components/cell';
+import "@assets/css/font.css";
+import Cell from "@components/cell";
 
 export default {
-  name: 'ShowCase',
+  name: "ShowCase",
   components: {
     cell: Cell
   },
@@ -31,138 +33,139 @@ export default {
     return {
       components: [
         {
-          title: 'JS Components',
+          title: "JS Components(JS 组件)",
           category: [
             {
-              title: 'Toast',
-              icon: 'toast',
-              to: '/toast'
+              title: "Toast",
+              icon: "toast",
+              to: "/toast"
             },
             {
-              title: 'Indicator',
-              icon: 'indicator'
+              title: "Indicator",
+              icon: "indicator"
             },
             {
-              title: 'Pull down',
-              icon: 'pull-down'
+              title: "Pull down",
+              icon: "pull-down"
             },
             {
-              title: 'Pull up',
-              icon: 'pull-up'
+              title: "Pull up",
+              icon: "pull-up"
             },
             {
-              title: 'Infinite scroll',
-              icon: 'infinite-scroll'
+              title: "Infinite scroll",
+              icon: "infinite-scroll"
             },
             {
-              title: 'Message box',
-              icon: 'message-box'
+              title: "Message box",
+              icon: "message-box"
             },
             {
-              title: 'Action sheet',
-              icon: 'action-sheet'
+              title: "Action sheet",
+              icon: "action-sheet"
             },
             {
-              title: 'Popup',
-              icon: 'popup'
+              title: "Popup",
+              icon: "popup"
             },
             {
-              title: 'Swipe',
-              icon: 'swipe'
+              title: "Swipe",
+              icon: "swipe"
             },
             {
-              title: 'Lazy load',
-              icon: 'lazyload'
+              title: "Lazy load",
+              icon: "lazyload"
             },
             {
-              title: 'Range',
-              icon: 'range'
+              title: "Range",
+              icon: "range"
             },
             {
-              title: 'Progress',
-              icon: 'progress'
+              title: "Progress",
+              icon: "progress"
             },
             {
-              title: 'Picker',
-              icon: 'picker'
+              title: "Picker",
+              icon: "picker"
             },
             {
-              title: 'Datetime Picker',
-              icon: 'time'
+              title: "Datetime Picker",
+              icon: "time"
             },
             {
-              title: 'Index List',
-              icon: 'alphabet'
+              title: "Index List",
+              icon: "alphabet"
             },
             {
-              title: 'Palette Button',
-              icon: 'alphabet'
+              title: "Palette Button",
+              icon: "alphabet"
             }
           ]
         },
         {
-          title: 'CSS Components',
+          title: "CSS Components(CSS 组件)",
           category: [
             {
-              title: 'Header',
-              icon: 'header'
+              title: "Header",
+              icon: "header"
             },
             {
-              title: 'Tabbar',
-              icon: 'tabbar'
+              title: "Tabbar",
+              icon: "tabbar"
             },
             {
-              title: 'Navbar',
-              icon: 'navbar'
+              title: "Navbar",
+              icon: "navbar"
             },
             {
-              title: 'Button',
-              icon: 'button'
+              title: "Button",
+              icon: "button",
+              to: "/button"
             },
             {
-              title: 'Cell',
-              icon: 'cell'
+              title: "Cell",
+              icon: "cell"
             },
             {
-              title: 'Cell Swipe',
-              icon: 'cell'
+              title: "Cell Swipe",
+              icon: "cell"
             },
             {
-              title: 'Spinner',
-              icon: 'spinner'
+              title: "Spinner",
+              icon: "spinner"
             },
             {
-              title: 'TabContainer',
-              icon: 'panel'
+              title: "TabContainer",
+              icon: "panel"
             },
             {
-              title: 'Search',
-              icon: 'searchbar'
+              title: "Search",
+              icon: "searchbar"
             }
           ]
         },
         {
-          title: 'Form Components',
+          title: "Form Components(表单组件)",
           category: [
             {
-              title: 'Switch',
-              icon: 'switch'
+              title: "Switch",
+              icon: "switch"
             },
             {
-              title: 'Checklist',
-              icon: 'checklist'
+              title: "Checklist",
+              icon: "checklist"
             },
             {
-              title: 'Radio',
-              icon: 'radio'
+              title: "Radio",
+              icon: "radio"
             },
             {
-              title: 'Field',
-              icon: 'field'
+              title: "Field",
+              icon: "field"
             },
             {
-              title: 'Badge',
-              icon: 'badge'
+              title: "Badge",
+              icon: "badge"
             }
           ]
         }
@@ -174,14 +177,6 @@ export default {
 
 <style lang='scss'>
 .showcase-group {
-  .sg-title {
-    font-size: 20px;
-    margin: 20px auto;
-    text-align: center;
-    display: block;
-    line-height: 1;
-  }
-
   i {
     margin-top: 2px;
     font-size: 22px;
@@ -189,7 +184,7 @@ export default {
     display: inline-block;
     width: 30px;
     vertical-align: middle;
-    font-family: 'indexmintui' !important;
+    font-family: "indexmintui" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;

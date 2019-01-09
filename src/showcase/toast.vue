@@ -1,16 +1,18 @@
 <template>
   <div>
-
+    
   </div>
 </template>
 
 <script>
   import Toast from '@components/toast'
+  import Button from '@components/button'
 
   export default {
     name: 'toast',
     components: {
-      'showcase-toast': Toast
+      'mt-toast': Toast,
+      'mt-button': Button
     }
   };
 </script>
