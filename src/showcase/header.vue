@@ -1,41 +1,40 @@
 <template>
-  <div class="header">
-    <router-link to="/navigation">
-      <i class="page-back mintui mintui-back"></i>
-    </router-link>
-    <div class="header-title">{{ title }}</div>
+  <div class="container">
+    <mt-header title="固定在顶部" :fixed="!fixed" :hasHeaderBack="hasHeaderBack"></mt-header>
+    <mt-header title="标题过长会隐藏后面的内容啊哈哈哈哈" :fixed="fixed"></mt-header>
+    <mt-header title="多个按钮" :hasHeaderRight="hasHeaderRight" :fixed="fixed"></mt-header>
   </div>
 </template>
 
 <script>
+import Header from "@components/header";
+import Button from "@components/button";
+
 export default {
   name: "Header",
   props: {
     title: String
+  },
+  components: {
+    "mt-header": Header,
+    "mt-button": Button
+  },
+  data() {
+    return {
+      hasHeaderBack: false,
+      fixed: false,
+      hasHeaderRight: true
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-.header {
-  background-color: #fff;
+<style lang="scss">
+  .mint-header {
+    margin-top: 50px;
 
-  .header-title {
-    font-size: 20px;
-    text-align: center;
-    height: 60px;
-    line-height: 60px;
+    &:first-child {
+      margin-top: 0;
+    }
   }
-
-  .page-back {
-    top: 12px;
-    left: 10px;
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 20px;
-  }
-}
 </style>
