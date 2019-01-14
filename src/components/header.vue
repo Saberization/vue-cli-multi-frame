@@ -6,12 +6,11 @@
     <router-link
       :to="backTo"
       slot="left"
-      v-if="hasHeaderBack"
     >
-      <mt-button icon="back">{{ backText }}</mt-button>
+      <slot name="left"></slot>
     </router-link>
 
-    <mt-button v-if="hasHeaderRight" icon="more" slot="right"></mt-button>
+    <slot name="right" slot="right"></slot>
   </mt-header>
 </template>
 
@@ -29,24 +28,12 @@ export default {
   props: {
     fixed: {
       type: Boolean,
-      default: true
+      default: false
     },
     title: String,
     backTo: {
       type: String,
-      default: '/'
-    },
-    backText: {
-      type: String,
-      default: '返回'
-    },
-    hasHeaderRight: {
-      type: Boolean,
-      default: false
-    },
-    hasHeaderBack: {
-      type: Boolean,
-      default: true
+      default: "/"
     }
   }
 };

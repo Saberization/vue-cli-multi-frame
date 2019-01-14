@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <mt-header title="Button"></mt-header>
+    <mt-header title="Button">
+      <mt-button icon="back" slot="left">返回</mt-button>
+    </mt-header>
     <div class="content">
       <div class="page-button-group">
         <mt-button type="default" size="large">default</mt-button>
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import Header from './header';
+import Header from '@components/header';
 import Button from "@components/button";
 
 export default {
@@ -53,6 +55,7 @@ export default {
 
 <style lang="scss" scoped>
   .content {
+    margin-top: 40px;
     padding: 10px;
 
     .page-button-group > * {

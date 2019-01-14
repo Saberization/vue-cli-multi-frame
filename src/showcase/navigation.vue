@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import '@assets/css/font.css';
 import Cell from '@components/cell';
 
 export default {
