@@ -41,7 +41,8 @@ export default {
             },
             {
               title: 'Indicator',
-              icon: 'indicator'
+              icon: 'indicator',
+              to: '/indicator'
             },
             {
               title: 'Pull down',

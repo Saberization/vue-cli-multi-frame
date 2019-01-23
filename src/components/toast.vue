@@ -8,6 +8,7 @@ export default {
   name: 'toast',
   methods: {
     /**
+     * @if params === Object
      * message {String} 文本内容
      * position {String} Toast 的位置 默认值middle
      * duration {Number} 持续时间 默认值 3000
