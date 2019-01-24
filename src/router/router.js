@@ -3,6 +3,7 @@ import Toast from '@showcase/toast'
 import Button from '@showcase/button'
 import Header from '@showcase/header'
 import Indicator from '@showcase/indicator'
+import Pullrefresh from '@showcase/pullrefresh'
 
 const routes = [{
   path: '*',
@@ -22,6 +23,9 @@ const routes = [{
 }, {
   path: '/indicator',
   component: Indicator
+}, {
+  path: '/pullrefresh',
+  component: Pullrefresh
 }]
 
 export default routes

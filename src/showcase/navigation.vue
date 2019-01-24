@@ -54,7 +54,8 @@ export default {
             },
             {
               title: 'Infinite scroll',
-              icon: 'infinite-scroll'
+              icon: 'infinite-scroll',
+              to: '/pullrefresh'
             },
             {
               title: 'Message box',

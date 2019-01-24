@@ -8,7 +8,8 @@ import '@assets/css/common.css'
 Vue.use(Vuex)
 Vue.use(VueRouter)
 
-Vue.config.productionTip = false
+Vue.config.devtools = true;
+Vue.config.productionTip = false;
 
 const router = new VueRouter({
   routes
