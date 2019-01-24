@@ -5,10 +5,12 @@
     </mt-header>
 
     <div class="container-body">
-      <mt-button size="large">点击弹出 Indicator</mt-button>
-      <mt-button size="large">可配置 spinner</mt-button>
-      <mt-button size="large">点击弹出带有文字的 Indicator</mt-button>
+      <mt-button size="large" @click.native="showWaiting">点击弹出 Indicator</mt-button>
+      <mt-button size="large" @click.native="showConfigurationWaiting">可配置 spinner</mt-button>
+      <mt-button size="large" @click.native="showTextWaiting">点击弹出带有文字的 Indicator</mt-button>
     </div>
+
+    <mt-indicator ref="waiting"></mt-indicator>
   </div>
 </template>
 
@@ -23,7 +25,36 @@ export default {
     "mt-button": Button,
     "mt-header": Header,
     "mt-indicator": Indicator
-  }
+  },
+  methods: {
+    showWaiting() {
+      this.$refs.waiting.showWaiting();
+
+      setTimeout(() => {
+        this.closeWaiting();
+      }, 1300);
+    },
+    showConfigurationWaiting() {
+      this.$refs.waiting.showWaiting({
+        text: 'waiting',
+        spinnerType: 'fading-circle' // 'snake' 'fading-circle' 'double-bounce' 'triple-bounce'，默认为 'snake'
+      });
+
+      setTimeout(() => {
+        this.closeWaiting();
+      }, 1300);
+    },
+    showTextWaiting() {
+      this.$refs.waiting.showWaiting('带文字的 waiting');
+
+      setTimeout(() => {
+        this.closeWaiting();
+      }, 1300);
+    },
+    closeWaiting() {
+      this.$refs.waiting.closeWaiting();
+    }
+  },
 };
 </script>
 
