@@ -45,17 +45,13 @@ export default {
               to: '/indicator'
             },
             {
-              title: 'Pull down',
-              icon: 'pull-down'
-            },
-            {
-              title: 'Pull up',
-              icon: 'pull-up'
+              title: 'Pull refresh',
+              icon: 'pull-down',
+              to: '/pulltorefresh'
             },
             {
               title: 'Infinite scroll',
-              icon: 'infinite-scroll',
-              to: '/pullrefresh'
+              icon: 'infinite-scroll'
             },
             {
               title: 'Message box',

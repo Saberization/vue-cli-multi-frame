@@ -16,7 +16,6 @@
 
 <script>
 import Util from '@util/'
-import { getScreenApps } from '@/model/'
 import Toast from '@components/toast'
 
 export default {
@@ -39,10 +38,6 @@ export default {
     Toast
   },
   mounted() {
-    getScreenApps()
-      .then(function(response) {
-        console.log(response);
-      })
   },
 };
 </script>
