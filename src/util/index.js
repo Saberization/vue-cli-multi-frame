@@ -1,4 +1,4 @@
-import { request, requestAll } from './request'
+import { request, requestAll } from './request';
 
 /**
  * 打开页面
