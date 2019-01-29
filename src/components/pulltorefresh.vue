@@ -73,7 +73,7 @@ export default {
     requestAjax() {
       Util.request({
         url: this.url,
-        data: this.requestAjax,
+        data: this.requestData,
         type: 'post'
       })
       .then(function(response) {

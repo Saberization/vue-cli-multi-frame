@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Util from './index'
 import store from '@/store.js'
+import Config from '@shared/config'
 
 const defaultSettings = {
   type: 'post',
@@ -11,7 +12,7 @@ const defaultSettings = {
   headers: {},
   contentType: 'application/x-www-form-urlencoded',
   withCredentials: false,
-  isAutoProxy: true
+  isAutoProxy: Config.isAutoProxy
 }
 
 let params = {}
