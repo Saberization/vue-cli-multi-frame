@@ -9,7 +9,9 @@
     <div class="container-body">
       <mt-pulltorefresh url="http://yapi.demo.qunar.com/mock/43176/mock/getlist" ref="refresh">
         <ul>
-          <li></li>
+          <li v-for="(v, i) in list" :key="i">
+            <mt-cell :title="v.title"></mt-cell>
+          </li>
         </ul>
       </mt-pulltorefresh>
     </div>
@@ -48,6 +50,14 @@ export default {
           pagesize: 10,
           keyword: ''
         }
+      });
+    });
+
+    this.$refs.refresh.success(response => {
+      const infolist = response.custom.infolist;
+
+      infolist.forEach(e => {
+        this.list.push(e);
       });
     });
   },

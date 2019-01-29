@@ -4,6 +4,7 @@ import Button from '@showcase/button'
 import Header from '@showcase/header'
 import Indicator from '@showcase/indicator'
 import PullToRefresh from '@showcase/pulltorefresh'
+import Search from '@showcase/search'
 
 const routes = [{
   path: '*',
@@ -26,6 +27,9 @@ const routes = [{
 }, {
   path: '/pulltorefresh',
   component: PullToRefresh
+}, {
+  path: '/search',
+  component: Search
 }]
 
 export default routes

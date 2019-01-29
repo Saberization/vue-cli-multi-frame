@@ -44,7 +44,9 @@ export default {
   data() {
     return {
       requestData: null,
-      requestCallback: null
+      requestCallback: null,
+      successCallback: null,
+      errorCallback: null
     };
   },
   methods: {
@@ -66,7 +68,9 @@ export default {
         this.requestAjax();
       }
     },
-    loadTop() {},
+    loadTop() {
+      
+    },
     loadBottom() {
 
     },
@@ -76,16 +80,19 @@ export default {
         data: this.requestData,
         type: 'post'
       })
-      .then(function(response) {
-        console.log(response);
+      .then(response => {
+        this.successCallback(response.data, response)
       })
       .catch(function(err) {
-        console.log(err);
+        this.errorCallback(err);
       });
+    },
+    success(callback) {
+      this.successCallback = callback;
+    },
+    error(callback) {
+      this.errorCallback = callback;
     }
   }
 };
 </script>
-
-<style lang="scss">
-</style>

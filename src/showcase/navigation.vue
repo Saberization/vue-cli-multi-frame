@@ -138,7 +138,8 @@ export default {
             },
             {
               title: 'Search',
-              icon: 'searchbar'
+              icon: 'searchbar',
+              to: '/search'
             }
           ]
         },
