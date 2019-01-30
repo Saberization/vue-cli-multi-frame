@@ -137,9 +137,9 @@ export default {
               icon: 'panel'
             },
             {
-              title: 'Search',
+              title: 'Searchbar',
               icon: 'searchbar',
-              to: '/search'
+              to: '/searchbar'
             }
           ]
         },

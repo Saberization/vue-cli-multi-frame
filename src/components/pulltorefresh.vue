@@ -17,81 +17,17 @@ export default {
   components: {
     "mt-loadermore": Loadmore
   },
-  props: {
-    url: {
-      type: String,
-      required: true
-    },
-    initPageIndex: {
-      type: Number,
-      default: 0
-    },
-    pageSize: {
-      type: Number,
-      default: 10
-    },
-    isDebug: {
-      type: Boolean,
-      default: false
-    },
-    delay: {
-      type: Number,
-      default: 0
-    },
-    headers: Object,
-    contentType: String
-  },
   data() {
     return {
-      requestData: null,
-      requestCallback: null,
-      successCallback: null,
-      errorCallback: null
     };
   },
   methods: {
-    dataRequest(callback) {
-      this.requestCallback = callback;
-
-      let data = callback && typeof callback === 'function' && callback(this.initPageIndex, this.getRequestData);
-
-      if (data && typeof data === 'object') {
-        this.requestData = data;
-        // request ajax
-        this.requestAjax();
-      }
-    },
-    getRequestData(params) {
-      if (params && typeof params === 'object') {
-        this.requestData = params;
-        // request ajax
-        this.requestAjax();
-      }
-    },
     loadTop() {
-      
     },
     loadBottom() {
-
     },
-    requestAjax() {
-      Util.request({
-        url: this.url,
-        data: this.requestData,
-        type: 'post'
-      })
-      .then(response => {
-        this.successCallback(response.data, response)
-      })
-      .catch(function(err) {
-        this.errorCallback(err);
-      });
-    },
-    success(callback) {
-      this.successCallback = callback;
-    },
-    error(callback) {
-      this.errorCallback = callback;
+    PullToRefresh(options) {
+      console.log(options);
     }
   }
 };
