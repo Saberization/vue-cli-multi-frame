@@ -46,7 +46,7 @@ export default {
   },
   methods: {},
   mounted() {
-    // 重新赋值避免 ESLINT 报错 
+    // 重新赋值避免 ESLINT 报错
     const Console = console;
 
     this.$refs.refresh.PullToRefresh({
@@ -77,7 +77,7 @@ export default {
         // topStatus 为 loading 时加载提示区域的文字
         topLoadingText: "加载中...",
         // 触发 topMethod 的下拉距离阈值（像素）
-        topDistance: 70,
+        topDistance: 50,
         // 下拉刷新事件回调，每次下拉刷新后会触发
         pullDown() {
           Console.log("pull down");
@@ -85,11 +85,11 @@ export default {
         // bottomStatus 为 pull 时加载提示区域的文字
         bottomPullText: "上拉刷新",
         // bottomStatus 为 drop 时加载提示区域的文字
-        bottomDropText: '释放更新',
+        bottomDropText: "释放更新",
         // bottomStatus 为 loading 时加载提示区域的文字
-        bottomLoadingText: '加载中...',
+        bottomLoadingText: "加载中...",
         // 触发 bottomMethod 的上拉距离阈值（像素）
-        bottomDistance: 70,
+        bottomDistance: 50,
         // 上拉刷新事件回调，每次上拉刷新后会触发
         pullUp() {
           Console.log("pull up");
