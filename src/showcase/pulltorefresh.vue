@@ -7,7 +7,7 @@
       >返回</mt-button>
     </mt-header>
     <div class="container-body">
-      <searchbar @enter="enterSearch"></searchbar>
+      <searchbar v-model="searchValue" @enter="enter"></searchbar>
       <mt-pulltorefresh ref="refresh">
         <ul>
           <li
@@ -49,8 +49,8 @@ export default {
     };
   },
   methods: {
-    enterSearch(value) {
-      console.log(value);
+    enter(value) {
+      this.$refs.refresh.refresh();
     }
   },
   mounted() {

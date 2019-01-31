@@ -1,33 +1,36 @@
 <template>
   <mt-loadermore
-    :autoFill="settings.autoFill"
-    :distanceIndex="settings.distanceIndex"
-    :maxDistance="settings.maxDistance"
-    :topPullText="settings.topPullText"
-    :topDropText="settings.topDropText"
-    :topLoadingText="settings.topLoadingText"
-    :topDistance="settings.topDistance"
-    :bottomPullText="settings.bottomPullText"
-    :bottomDropText="settings.bottomDropText"
-    :bottomLoadingText="settings.bottomLoadingText"
-    :bottomDistance="settings.bottomDistance"
-    :bottomAllLoaded="settings.bottomAllLoaded"
-    :topMethod="topMethod"
-    :bottomMethod="bottomMethod"
-    ref="loadmore"
-  >
-    <slot></slot>
-  </mt-loadermore>
+      :autoFill="settings.autoFill"
+      :distanceIndex="settings.distanceIndex"
+      :maxDistance="settings.maxDistance"
+      :topPullText="settings.topPullText"
+      :topDropText="settings.topDropText"
+      :topLoadingText="settings.topLoadingText"
+      :topDistance="settings.topDistance"
+      :bottomPullText="settings.bottomPullText"
+      :bottomDropText="settings.bottomDropText"
+      :bottomLoadingText="settings.bottomLoadingText"
+      :bottomDistance="settings.bottomDistance"
+      :bottomAllLoaded="settings.bottomAllLoaded"
+      :topMethod="topMethod"
+      :bottomMethod="bottomMethod"
+      ref="loadmore"
+    >
+      <slot></slot>
+      <mt-indicator ref="waiting"></mt-indicator>
+    </mt-loadermore>
 </template>
 
 <script>
 import { Loadmore } from "mint-ui";
-import Util from "@util"
+import Util from "@util";
+import Indicator from "@components/indicator";
 
 export default {
   name: "Loadmore",
   components: {
-    "mt-loadermore": Loadmore
+    "mt-loadermore": Loadmore,
+    "mt-indicator": Indicator
   },
   data() {
     return {
@@ -55,7 +58,7 @@ export default {
         that.$refs.loadmore.onTopLoaded();
       });
 
-      pullDown && typeof pullDown === 'function' && pullDown();
+      pullDown && typeof pullDown === "function" && pullDown();
     },
     // 上拉刷新执行的方法
     bottomMethod() {
@@ -63,11 +66,11 @@ export default {
       const that = this;
 
       this.pageIndex++;
-      this.dataRequest(this.pageIndex, function () {
+      this.dataRequest(this.pageIndex, function() {
         that.$refs.loadmore.onBottomLoaded();
       });
 
-      pullUp && typeof pullUp === 'function' && pullUp();
+      pullUp && typeof pullUp === "function" && pullUp();
     },
     /**
      * 初始化下拉刷新
@@ -86,7 +89,7 @@ export default {
       // 请求下拉数据
       this.dataRequest(this.pageIndex);
     },
-    
+
     /**
      * 设置下拉刷新配置
      * @param {Object} settings 配置项
@@ -128,7 +131,7 @@ export default {
         delay: 0
       };
 
-      if (settings && typeof settings === 'object') {
+      if (settings && typeof settings === "object") {
         Object.assign(defaultSettings, settings);
       }
 
@@ -163,17 +166,17 @@ export default {
         requestDataBackValue = null;
 
       if (!url) {
-        console.error('接口地址不能为空');
+        console.error("接口地址不能为空");
         return;
       }
 
-      if (typeof dataRequest !== 'function') {
-        console.error('请求参数不能为空');
+      if (typeof dataRequest !== "function") {
+        console.error("请求参数不能为空");
         return;
       }
 
       // 获取请求参数
-      requestData = dataRequest(pageIndex, function (data) {
+      requestData = dataRequest(pageIndex, function(data) {
         requestDataBackValue = data;
       });
 
@@ -192,13 +195,26 @@ export default {
 
       Util.request(ajaxOptions)
         .then(response => {
-          success(response.data, pageIndex, response)
-          complete && typeof complete === 'function' && complete();
+          success(response.data, pageIndex, response);
+          complete && typeof complete === "function" && complete();
         })
         .catch(err => {
           error(err);
-          complete && typeof complete === 'function' && complete();
+          complete && typeof complete === "function" && complete();
         });
+    },
+
+    /**
+     * 手动刷新
+     */
+    refresh() {
+      const that = this;
+
+      this.pageIndex = this.options.initPageIndex;
+      this.$refs.waiting.showWaiting();
+      this.dataRequest(this.pageIndex, function() {
+        that.$refs.waiting.closeWaiting();
+      });
     }
   }
 };
