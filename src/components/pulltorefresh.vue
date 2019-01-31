@@ -33,7 +33,8 @@ export default {
   },
   data() {
     return {
-      settings: {}
+      settings: {},
+      ajaxSettings: {}
     };
   },
   methods: {
@@ -42,7 +43,10 @@ export default {
     PullToRefresh(options) {
       const ajaxSettings = options.ajaxSettings;
 
+      // 设置下拉刷新配置
       this.setRefreshSetting(options.settings);
+      // 设置 ajaxSetting
+      this.setAjaxSetting(options.ajaxSettings);
     },
     
     /**
@@ -89,6 +93,10 @@ export default {
       }
 
       this.settings = settings;
+    },
+
+    setAjaxSetting() {
+
     }
   }
 };
