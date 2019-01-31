@@ -48,6 +48,7 @@ export default {
   mounted() {
     // 重新赋值避免 ESLINT 报错
     const Console = console;
+    const that = this;
 
     this.$refs.refresh.PullToRefresh({
       // 请求地址 url
@@ -64,9 +65,13 @@ export default {
         };
       },
       // 每次请求成功后的回调函数，回调的数据是处理过后的
-      success() {},
+      success({ custom }) {
+        that.list = custom.infolist;
+      },
       // 每次请求失败后的回调，默认不做处理
-      error() {},
+      error(error) {
+        console.error(error);
+      },
       // 接口请求的初始页面,根据不同项目服务器配置而不同,默认为0
       initPageIndex: 0,
       // 每次请求的最大超时时间，默认为6000

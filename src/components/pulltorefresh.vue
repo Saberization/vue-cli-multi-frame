@@ -14,8 +14,8 @@
     :bottomLoadingText="settings.bottomLoadingText"
     :bottomDistance="settings.bottomDistance"
     :bottomAllLoaded="settings.bottomAllLoaded"
-    :topMethod="settings.pullDown"
-    :bottomMethod="settings.pullUp"
+    :topMethod="topMethod"
+    :bottomMethod="bottomMethod"
     ref="loadmore"
   >
     <slot></slot>
@@ -24,6 +24,7 @@
 
 <script>
 import { Loadmore } from "mint-ui";
+import Util from "@util"
 
 export default {
   name: "Loadmore",
@@ -46,8 +47,20 @@ export default {
     };
   },
   methods: {
-    loadTop() {},
-    loadBottom() {},
+    loadTop() {
+      console.log('loadTop');
+    },
+    loadBottom() {
+      console.log('loadBottom');
+    },
+    // 下拉刷新执行的方法
+    topMethod() {
+      console.log('topMethod');
+    },
+    // 上拉刷新执行的方法
+    bottomMethod() {
+      console.log('bottomMethod');
+    },
     /**
      * 初始化下拉刷新
      * @param {Object} options 配置项
@@ -130,6 +143,8 @@ export default {
       const options = this.options;
       const url = options.url;
       const dataRequest = options.dataRequest;
+      const success = options.success || new Function();
+      const error = options.error || new Function();
       const that = this;
 
       let requestData = null,
@@ -157,6 +172,19 @@ export default {
       if (requestDataBackValue) {
         this.requestData = requestDataBackValue;
       }
+
+      const ajaxOptions = Object.assign(this.ajaxSettings, {
+        url,
+        data: requestData
+      });
+
+      Util.request(ajaxOptions)
+        .then(response => {
+          success(response.data, pageIndex, response)
+        })
+        .catch(err => {
+          error(err);
+        });
     }
   }
 };
