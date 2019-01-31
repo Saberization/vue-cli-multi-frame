@@ -53,7 +53,16 @@ export default {
       // 请求地址 url
       url: "http://yapi.demo.qunar.com/mock/43176/mock/getlist",
       // 请求的数据，为函数时请将数据返回出去
-      dataRequest(currentPage) {},
+      dataRequest(currPage, requestCallback) {
+        return {
+          token: "Aa7D5CA7-6D0d-BB60-9F95-e34EDC7eC0E7",
+          params: {
+            pageIndex: currPage,
+            pageSize: 10,
+            keyword: ""
+          }
+        };
+      },
       // 每次请求成功后的回调函数，回调的数据是处理过后的
       success() {},
       // 每次请求失败后的回调，默认不做处理
@@ -61,7 +70,7 @@ export default {
       // 接口请求的初始页面,根据不同项目服务器配置而不同,默认为0
       initPageIndex: 0,
       // 每次请求的最大超时时间，默认为6000
-      timeout: 600,
+      timeout: 6000,
       // 下拉刷新配置
       settings: {
         // 若为真，PullToRefresh 会自动检测并撑满其容器

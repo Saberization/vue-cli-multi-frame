@@ -24,7 +24,6 @@
 
 <script>
 import { Loadmore } from "mint-ui";
-import Util from "@util/";
 
 export default {
   name: "Loadmore",
@@ -34,19 +33,37 @@ export default {
   data() {
     return {
       settings: {},
-      ajaxSettings: {}
+      ajaxSettings: {},
+      options: {
+        // 接口请求的初始页面,根据不同项目服务器配置而不同,默认为0
+        initPageIndex: 0,
+        // 每次请求的最大超时时间，默认为6000
+        timeout: 6000
+      },
+      url: null,
+      pageIndex: null,
+      requestData: null
     };
   },
   methods: {
     loadTop() {},
     loadBottom() {},
+    /**
+     * 初始化下拉刷新
+     * @param {Object} options 配置项
+     */
     PullToRefresh(options) {
       const ajaxSettings = options.ajaxSettings;
 
+      Object.assign(this.options, options);
+
+      this.pageIndex = options.initPageIndex;
       // 设置下拉刷新配置
       this.setRefreshSetting(options.settings);
       // 设置 ajaxSetting
       this.setAjaxSetting(options.ajaxSettings);
+      // 请求下拉数据
+      this.dataRequest(this.pageIndex);
     },
     
     /**
@@ -95,8 +112,51 @@ export default {
       this.settings = settings;
     },
 
-    setAjaxSetting() {
+    /**
+     * 设置 ajax 配置项
+     * @param {Object} ajaxSettings 配置项
+     */
+    setAjaxSetting(ajaxSettings) {
+      ajaxSettings = ajaxSettings || {};
+      ajaxSettings.timeout = this.options.timeout;
 
+      Object.assign(this.ajaxSettings, ajaxSettings);
+    },
+
+    /**
+     * 请求下拉刷新数据
+     */
+    dataRequest(pageIndex) {
+      const options = this.options;
+      const url = options.url;
+      const dataRequest = options.dataRequest;
+      const that = this;
+
+      let requestData = null,
+        requestDataBackValue = null;
+
+      if (!url) {
+        console.error('接口地址不能为空');
+        return;
+      }
+
+      if (typeof dataRequest !== 'function') {
+        console.error('请求参数不能为空');
+        return;
+      }
+
+      // 获取请求参数
+      requestData = dataRequest(pageIndex, function (data) {
+        requestDataBackValue = data;
+      });
+
+      if (requestData) {
+        this.requestData = requestData;
+      }
+
+      if (requestDataBackValue) {
+        this.requestData = requestDataBackValue;
+      }
     }
   }
 };
