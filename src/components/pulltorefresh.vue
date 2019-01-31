@@ -1,7 +1,5 @@
 <template>
   <mt-loadermore
-    :top-method="loadTop"
-    :bottom-method="loadBottom"
     :autoFill="settings.autoFill"
     :distanceIndex="settings.distanceIndex"
     :maxDistance="settings.maxDistance"
@@ -47,19 +45,29 @@ export default {
     };
   },
   methods: {
-    loadTop() {
-      console.log('loadTop');
-    },
-    loadBottom() {
-      console.log('loadBottom');
-    },
     // 下拉刷新执行的方法
     topMethod() {
-      console.log('topMethod');
+      const pullDown = this.settings.pullDown;
+      const that = this;
+
+      this.pageIndex = this.options.initPageIndex;
+      this.dataRequest(this.pageIndex, function() {
+        that.$refs.loadmore.onTopLoaded();
+      });
+
+      pullDown && typeof pullDown === 'function' && pullDown();
     },
     // 上拉刷新执行的方法
     bottomMethod() {
-      console.log('bottomMethod');
+      const pullUp = this.settings.pullUp;
+      const that = this;
+
+      this.pageIndex++;
+      this.dataRequest(this.pageIndex, function () {
+        that.$refs.loadmore.onBottomLoaded();
+      });
+
+      pullUp && typeof pullUp === 'function' && pullUp();
     },
     /**
      * 初始化下拉刷新
@@ -103,7 +111,7 @@ export default {
         // 触发 topMethod 的下拉距离阈值（像素）
         topDistance: 70,
         // 下拉刷新事件回调，每次下拉刷新后会触发
-        pullDown() {},
+        pullDown: null,
         // bottomStatus 为 pull 时加载提示区域的文字
         bottomPullText: "上拉刷新",
         // bottomStatus 为 drop 时加载提示区域的文字
@@ -113,9 +121,11 @@ export default {
         // 触发 bottomMethod 的上拉距离阈值（像素）
         bottomDistance: 70,
         // 上拉刷新事件回调，每次上拉刷新后会触发
-        pullUp() {},
+        pullUp: null,
         // 若为真，则 bottomMethod 不会被再次触发
-        bottomAllLoaded: false
+        bottomAllLoaded: false,
+        // 延迟请求的时间，单位为毫秒，默认为 0
+        delay: 0
       };
 
       if (settings && typeof settings === 'object') {
@@ -138,8 +148,10 @@ export default {
 
     /**
      * 请求下拉刷新数据
+     * @param {Number} pageIndex 页面 Index
+     * @param {Function} complete 成功运行函数
      */
-    dataRequest(pageIndex) {
+    dataRequest(pageIndex, complete) {
       const options = this.options;
       const url = options.url;
       const dataRequest = options.dataRequest;
@@ -181,9 +193,11 @@ export default {
       Util.request(ajaxOptions)
         .then(response => {
           success(response.data, pageIndex, response)
+          complete && typeof complete === 'function' && complete();
         })
         .catch(err => {
           error(err);
+          complete && typeof complete === 'function' && complete();
         });
     }
   }

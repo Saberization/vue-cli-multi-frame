@@ -6,6 +6,12 @@
       class="em-srhbar-input"
       :placeholder="placeholder"
       @input="inputValue"
+      @keypress.13="keyPressEnter"
+      @keypress="keyPress"
+      @keydown="keyDown"
+      @keyup="keyUp"
+      @focus="focus"
+      @blur="blur"
     >
   </div>
 </template>
@@ -22,6 +28,30 @@ export default {
   methods: {
     inputValue() {
       this.$emit('input', event.target.value);
+    },
+
+    keyPressEnter() {
+      this.$emit('enter', event.target.value);
+    },
+
+    keyPress() {
+      this.$emit('keypress', event);
+    },
+
+    keyDown() {
+      this.$emit('keydown', event);
+    },
+
+    keyUp() {
+      this.$emit('keyup', event);
+    },
+
+    focus() {
+      this.$emit('focus', event);
+    },
+
+    blur() {
+      this.$emit('blur', event);
     }
   }
 };

@@ -7,7 +7,7 @@
       >返回</mt-button>
     </mt-header>
     <div class="container-body">
-      <searchbar></searchbar>
+      <searchbar @enter="enterSearch"></searchbar>
       <mt-pulltorefresh ref="refresh">
         <ul>
           <li
@@ -30,6 +30,9 @@ import Cell from "@components/cell";
 import PullToRefresh from "@components/pulltorefresh";
 import Searchbar from "@components/searchbar";
 
+// 重新赋值避免 ESLINT 报错
+const Console = console;
+
 export default {
   name: "PullToRefresh",
   components: {
@@ -41,13 +44,16 @@ export default {
   },
   data() {
     return {
-      list: []
+      list: [],
+      searchValue: ""
     };
   },
-  methods: {},
+  methods: {
+    enterSearch(value) {
+      console.log(value);
+    }
+  },
   mounted() {
-    // 重新赋值避免 ESLINT 报错
-    const Console = console;
     const that = this;
 
     this.$refs.refresh.PullToRefresh({
@@ -60,17 +66,23 @@ export default {
           params: {
             pageIndex: currPage,
             pageSize: 10,
-            keyword: ""
+            keyword: that.searchValue
           }
         };
       },
       // 每次请求成功后的回调函数，回调的数据是处理过后的
-      success({ custom }) {
-        that.list = custom.infolist;
+      success({ custom }, pageIndex) {
+        if (pageIndex === 0) {
+          that.list = custom.infolist;
+        } else {
+          custom.infolist.forEach(e => {
+            that.list.push(e);
+          });
+        }
       },
       // 每次请求失败后的回调，默认不做处理
       error(error) {
-        console.error(error);
+        Console.error(error);
       },
       // 接口请求的初始页面,根据不同项目服务器配置而不同,默认为0
       initPageIndex: 0,
