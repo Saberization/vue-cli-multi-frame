@@ -30,7 +30,6 @@ import Cell from "@components/cell";
 import PullToRefresh from "@components/pulltorefresh";
 import Searchbar from "@components/searchbar";
 
-// 重新赋值避免 ESLINT 报错
 const Console = console;
 
 export default {
