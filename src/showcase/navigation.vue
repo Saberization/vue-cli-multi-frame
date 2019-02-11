@@ -61,7 +61,8 @@ export default {
             },
             {
               title: 'Popup',
-              icon: 'popup'
+              icon: 'popup',
+              to: '/popup'
             },
             {
               title: 'Swipe',

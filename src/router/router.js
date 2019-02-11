@@ -7,6 +7,7 @@ import PullToRefresh from '@showcase/pulltorefresh'
 import Searchbar from '@showcase/searchbar'
 import MessageBox from '@showcase/messagebox'
 import ActionSheet from '@showcase/actionsheet'
+import Popup from '@showcase/popup'
 
 const routes = [{
   path: '*',
@@ -38,6 +39,9 @@ const routes = [{
 }, {
   path: '/actionsheet',
   component: ActionSheet
+}, {
+  path: '/popup',
+  component: Popup
 }]
 
 export default routes
