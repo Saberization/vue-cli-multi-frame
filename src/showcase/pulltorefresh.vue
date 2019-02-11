@@ -7,9 +7,16 @@
       >返回</mt-button>
     </mt-header>
     <div class="container-body">
-      <searchbar v-model="searchValue" @enter="enter"></searchbar>
-      <mt-pulltorefresh ref="refresh">
-        <ul>
+      <searchbar
+        v-model="searchValue"
+        @enter="enter"
+      ></searchbar>
+      <mt-pulltorefresh
+        ref="refresh"
+        top="86"
+        :settings="refreshSettings"
+      >
+        <ul id="listdata">
           <li
             v-for="(v, i) in list"
             :key="i"
@@ -43,7 +50,41 @@ export default {
   data() {
     return {
       list: [],
-      searchValue: ""
+      searchValue: "",
+      refreshSettings: {
+        // 若为真，PullToRefresh 会自动检测并撑满其容器
+        autoFill: false,
+        // 手指移动与组件移动距离的比值
+        distanceIndex: 2,
+        // 组件可移动的最大距离（像素），若为 0 则不限制
+        maxDistance: 0,
+        // topStatus 为 pull 时加载提示区域的文字
+        topPullText: "下拉刷新",
+        // topStatus 为 drop 时加载提示区域的文字
+        topDropText: "释放更新",
+        // topStatus 为 loading 时加载提示区域的文字
+        topLoadingText: "加载中...",
+        // 触发 topMethod 的下拉距离阈值（像素）
+        topDistance: 50,
+        // 下拉刷新事件回调，每次下拉刷新后会触发
+        pullDown() {
+          Console.log("pull down");
+        },
+        // bottomStatus 为 pull 时加载提示区域的文字
+        bottomPullText: "上拉刷新",
+        // bottomStatus 为 drop 时加载提示区域的文字
+        bottomDropText: "释放更新",
+        // bottomStatus 为 loading 时加载提示区域的文字
+        bottomLoadingText: "加载中...",
+        // 触发 bottomMethod 的上拉距离阈值（像素）
+        bottomDistance: 50,
+        // 上拉刷新事件回调，每次上拉刷新后会触发
+        pullUp() {
+          Console.log("pull up");
+        },
+        // 若为真，则 bottomMethod 不会被再次触发
+        bottomAllLoaded: false
+      }
     };
   },
   methods: {
@@ -86,41 +127,6 @@ export default {
       initPageIndex: 0,
       // 每次请求的最大超时时间，默认为6000
       timeout: 6000,
-      // 下拉刷新配置
-      settings: {
-        // 若为真，PullToRefresh 会自动检测并撑满其容器
-        autoFill: true,
-        // 手指移动与组件移动距离的比值
-        distanceIndex: 2,
-        // 组件可移动的最大距离（像素），若为 0 则不限制
-        maxDistance: 0,
-        // topStatus 为 pull 时加载提示区域的文字
-        topPullText: "下拉刷新",
-        // topStatus 为 drop 时加载提示区域的文字
-        topDropText: "释放更新",
-        // topStatus 为 loading 时加载提示区域的文字
-        topLoadingText: "加载中...",
-        // 触发 topMethod 的下拉距离阈值（像素）
-        topDistance: 50,
-        // 下拉刷新事件回调，每次下拉刷新后会触发
-        pullDown() {
-          Console.log("pull down");
-        },
-        // bottomStatus 为 pull 时加载提示区域的文字
-        bottomPullText: "上拉刷新",
-        // bottomStatus 为 drop 时加载提示区域的文字
-        bottomDropText: "释放更新",
-        // bottomStatus 为 loading 时加载提示区域的文字
-        bottomLoadingText: "加载中...",
-        // 触发 bottomMethod 的上拉距离阈值（像素）
-        bottomDistance: 50,
-        // 上拉刷新事件回调，每次上拉刷新后会触发
-        pullUp() {
-          Console.log("pull up");
-        },
-        // 若为真，则 bottomMethod 不会被再次触发
-        bottomAllLoaded: false
-      },
       // ajax的配置项
       ajaxSettings: {
         contentType: "application/x-www-form-urlencoded"
@@ -131,10 +137,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mint-loadmore {
-  top: 86px;
-}
-
 ul {
   padding-left: 10px;
   background-color: #fff;

@@ -292,21 +292,6 @@ th {
   padding: 0
 }
 
-.mint-loadmore-content {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.mint-loadmore {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 input[type=search] {
   font-size: 14px;
 }
