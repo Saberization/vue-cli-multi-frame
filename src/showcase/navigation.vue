@@ -56,7 +56,8 @@ export default {
             },
             {
               title: 'Action sheet',
-              icon: 'action-sheet'
+              icon: 'action-sheet',
+              to: '/actionsheet'
             },
             {
               title: 'Popup',

@@ -6,6 +6,7 @@ import Indicator from '@showcase/indicator'
 import PullToRefresh from '@showcase/pulltorefresh'
 import Searchbar from '@showcase/searchbar'
 import MessageBox from '@showcase/messagebox'
+import ActionSheet from '@showcase/actionsheet'
 
 const routes = [{
   path: '*',
@@ -34,6 +35,9 @@ const routes = [{
 }, {
   path: '/messagebox',
   component: MessageBox
+}, {
+  path: '/actionsheet',
+  component: ActionSheet
 }]
 
 export default routes
