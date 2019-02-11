@@ -50,12 +50,9 @@ export default {
               to: '/pulltorefresh'
             },
             {
-              title: 'Infinite scroll',
-              icon: 'infinite-scroll'
-            },
-            {
               title: 'Message box',
-              icon: 'message-box'
+              icon: 'message-box',
+              to: '/messagebox'
             },
             {
               title: 'Action sheet',

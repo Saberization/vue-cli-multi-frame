@@ -5,6 +5,7 @@ import Header from '@showcase/header'
 import Indicator from '@showcase/indicator'
 import PullToRefresh from '@showcase/pulltorefresh'
 import Searchbar from '@showcase/searchbar'
+import MessageBox from '@showcase/messagebox'
 
 const routes = [{
   path: '*',
@@ -30,6 +31,9 @@ const routes = [{
 }, {
   path: '/searchbar',
   component: Searchbar
+}, {
+  path: '/messagebox',
+  component: MessageBox
 }]
 
 export default routes
