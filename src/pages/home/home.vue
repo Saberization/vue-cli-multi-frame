@@ -9,14 +9,11 @@
     <h1>{{ toastMsg }}</h1>
     <button @click="openToast">显示 toast</button>
     <button @click="openPage">跳转到 news.html</button>
-
-    <Toast></Toast>
   </div>
 </template>
 
 <script>
 import Util from '@util/'
-import Toast from '@components/toast'
 
 export default {
   name: 'home',
@@ -33,9 +30,6 @@ export default {
     openToast() {
       
     }
-  },
-  components: {
-    Toast
   },
   mounted() {
   },

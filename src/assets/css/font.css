@@ -17,6 +17,11 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.mintui-toastsuccess {
+  font-size: 26px;
+}
+
 .mintui-searchbar:before { content: "\e601"; }
 .mintui-uislide:before { content: "\e600"; }
 .mintui-button:before { content: "\e602"; }

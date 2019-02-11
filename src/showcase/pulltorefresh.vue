@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { getRefreshList } from "@model/";
 import Header from "@components/header";
 import Button from "@components/button";
 import Cell from "@components/cell";
@@ -48,7 +47,7 @@ export default {
     };
   },
   methods: {
-    enter(value) {
+    enter() {
       this.$refs.refresh.refresh();
     }
   },
@@ -59,7 +58,7 @@ export default {
       // 请求地址 url
       url: "http://yapi.demo.qunar.com/mock/43176/mock/getlist",
       // 请求的数据，为函数时请将数据返回出去
-      dataRequest(currPage, requestCallback) {
+      dataRequest(currPage) {
         return {
           token: "Aa7D5CA7-6D0d-BB60-9F95-e34EDC7eC0E7",
           params: {

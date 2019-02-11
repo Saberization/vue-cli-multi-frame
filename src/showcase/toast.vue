@@ -24,39 +24,36 @@
         @click.native="customToast"
       >自定义 Toast 位置</mt-button>
     </div>
-
-    <mt-toast ref="toast"></mt-toast>
   </div>
 </template>
 
 <script>
 import Header from "@components/header";
-import Toast from "@components/toast";
 import Button from "@components/button";
+import { Toast } from "mint-ui";
 
 export default {
   name: "toast",
   components: {
-    "mt-toast": Toast,
     "mt-button": Button,
     "mt-header": Header
   },
   methods: {
     showToast() {
-      this.$refs.toast.showToast('操作成功');
+      Toast('操作成功');
     },
 
     showIconToast() {
-      this.$refs.toast.showToast({
+      Toast({
         message: '操作成功',
         iconClass: 'indexmintui mintui-toastsuccess'
       });
     },
 
     customToast() {
-      this.$refs.toast.showToast({
+      Toast({
         message: '操作成功',
-        position: 'bottom'
+        position: 'bottom' // top、middle、buttom
       });
     }
   },

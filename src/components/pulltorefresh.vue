@@ -77,8 +77,6 @@ export default {
      * @param {Object} options 配置项
      */
     PullToRefresh(options) {
-      const ajaxSettings = options.ajaxSettings;
-
       Object.assign(this.options, options);
 
       this.pageIndex = options.initPageIndex;
@@ -160,18 +158,18 @@ export default {
       const dataRequest = options.dataRequest;
       const success = options.success || new Function();
       const error = options.error || new Function();
-      const that = this;
+      const Console = console;
 
       let requestData = null,
         requestDataBackValue = null;
 
       if (!url) {
-        console.error("接口地址不能为空");
+        Console.error("接口地址不能为空");
         return;
       }
 
       if (typeof dataRequest !== "function") {
-        console.error("请求参数不能为空");
+        Console.error("请求参数不能为空");
         return;
       }
 
