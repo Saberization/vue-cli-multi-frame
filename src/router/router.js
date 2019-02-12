@@ -8,6 +8,7 @@ import Searchbar from '@showcase/searchbar'
 import MessageBox from '@showcase/messagebox'
 import ActionSheet from '@showcase/actionsheet'
 import Popup from '@showcase/popup'
+import Picker from '@showcase/picker'
 
 const routes = [{
   path: '*',
@@ -42,6 +43,9 @@ const routes = [{
 }, {
   path: '/popup',
   component: Popup
+}, {
+  path: '/picker',
+  component: Picker
 }]
 
 export default routes

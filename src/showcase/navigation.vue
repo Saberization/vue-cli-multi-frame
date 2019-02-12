@@ -82,7 +82,8 @@ export default {
             },
             {
               title: 'Picker',
-              icon: 'picker'
+              icon: 'picker',
+              to: '/picker'
             },
             {
               title: 'Datetime Picker',

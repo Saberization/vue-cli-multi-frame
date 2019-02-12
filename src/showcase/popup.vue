@@ -117,6 +117,10 @@ export default {
 
     closeRightPopup() {
       this.$refs.rightPopup.hide();
+    },
+
+    closeLeftPopup() {
+      this.$refs.leftPopup.hide();
     }
   }
 };
