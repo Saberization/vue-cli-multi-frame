@@ -1,18 +1,61 @@
 <template>
-  <mt-popup></mt-popup>
+  <mt-popup
+    :position="position"
+    :pop-transition="popTransition"
+    :modal="modal"
+    :closeOnClickModal="closeOnClickModal"
+    v-model="popupVisible"
+  >
+    <slot></slot>
+  </mt-popup>
 </template>
 
 <script>
 import { Popup } from "mint-ui";
 
 export default {
-  name: 'Popup',
+  name: "Popup",
   components: {
     "mt-popup": Popup
+  },
+  props: {
+    position: {
+      type: String,
+      default: ""
+    },
+    popTransition: {
+      type: String,
+      default: "popup-fade"
+    },
+    modal: {
+      type: Boolean,
+      default: true
+    },
+    closeOnClickModal: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data() {
+    return {
+      popupVisible: false
+    }
+  },
+  methods: {
+    show() {
+      this.popupVisible = true;
+    },
+
+    hide() {
+      this.popupVisible = false;
+    },
+
+    toggle() {
+      this.popupVisible = !this.popupVisible;
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">
-  
 </style>

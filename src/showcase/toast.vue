@@ -53,7 +53,7 @@ export default {
     customToast() {
       Toast({
         message: '操作成功',
-        position: 'bottom' // top、middle、buttom
+        position: 'bottom' // top、middle、bottom
       });
     }
   },
