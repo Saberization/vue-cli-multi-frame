@@ -50,7 +50,10 @@ export default {
   },
   data() {
     return {
-      slots: []
+      slots: [],
+      values1: [],
+      values2: [],
+      values3: []
     };
   },
   watch: {
@@ -63,34 +66,38 @@ export default {
   },
   methods: {
     onValuesChange(picker, values) {
-      if (values[0] > values[1]) {
-        // picker.setSlotValue(1, values[0]);
-      }
+      console.log(values);
     }
   },
   created() {
     const pickerData = this.pickerData;
-    const values1 = [],
-      values2 = [],
-      values3 = [];
+    const that = this;
 
     if (pickerData && Array.isArray(pickerData)) {
       const slots = this.slots;
 
-      pickerData.forEach(e => {
-        values1.push({
-          text: e.text,
-          value: e.value
-        });
-
-        const children = e.children;
-      });
-
       slots[0] = {
-        flex: 1,
-        values: values1,
-        className: 'slot1'
+        values: pickerData,
+        className: "slot1"
       };
+
+      const children = pickerData[0].children;
+
+      if (children && Array.isArray(children)) {
+        slots[1] = {
+          values: children,
+          className: "slot2"
+        };
+
+        const _children = children[0].children;
+
+        if (_children && Array.isArray(_children)) {
+          slots[2] = {
+            values: _children,
+            className: "slot3"
+          };
+        }
+      }
     }
   }
 };
