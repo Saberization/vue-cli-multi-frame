@@ -42,3 +42,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  .mint-button::after {
+    background-color: #e8e8e8 !important;
+  }
+</style>

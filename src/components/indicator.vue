@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import "mint-ui/lib/style.css";
 import { Indicator } from "mint-ui";
 
 export default {

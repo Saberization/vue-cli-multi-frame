@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import "mint-ui/lib/style.css";
 import { Header } from "mint-ui";
 import Button from "./button";
 

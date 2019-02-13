@@ -14,9 +14,11 @@
       @change="onValuesChange"
       ref="picker"
     >
-      <mt-button size="small" :class="{ 'btn-cancel': true }">取消</mt-button>
-      <slot></slot>
-      <mt-button size="small" :class="{ 'btn-confirm': true }">确定</mt-button>
+      <div class="picker-toolbar-con">
+        <mt-button size="small" :class="{ 'btn-cancel': true }">取消</mt-button>
+        <slot></slot>
+        <mt-button size="small" :class="{ 'btn-confirm': true }">确定</mt-button>
+      </div>
     </mt-picker>
   </mt-popup>
 </template>
@@ -59,7 +61,7 @@ export default {
     // 每个 slot 的高度
     itemHeight: {
       type: Number,
-      default: 40
+      default: 36
     },
     modal: {
       type: Boolean,
@@ -174,10 +176,26 @@ export default {
 
 <style lang="scss" scoped>
 .picker {
-  background-color: #fff;
+  .picker-toolbar-con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
 
-  .picker-items {
-    justify-content: space-around;
+    .btn-cancel,
+    .btn-confirm {
+      background-color: transparent;
+      box-shadow: none;
+      color: #1989fa;
+      font-size: 16px;
+
+      &:active {
+        background-color: #e8e8e8;
+      }
+    }
   }
 }
+
 </style>
