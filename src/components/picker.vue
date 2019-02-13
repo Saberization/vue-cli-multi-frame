@@ -15,9 +15,9 @@
       ref="picker"
     >
       <div class="picker-toolbar-con">
-        <mt-button size="small" :class="{ 'btn-cancel': true }">取消</mt-button>
+        <mt-button size="small" :class="{ 'btn-cancel': true }" @click.native="cancel">取消</mt-button>
         <slot></slot>
-        <mt-button size="small" :class="{ 'btn-confirm': true }">确定</mt-button>
+        <mt-button size="small" :class="{ 'btn-confirm': true }" @click.native="confirm">确定</mt-button>
       </div>
     </mt-picker>
   </mt-popup>
@@ -126,6 +126,47 @@ export default {
       }
     },
 
+    // 获取选择 picker 的结果
+    getSelectedResult() {
+      const picker = this.$refs.picker;
+      const slot1_value = picker.getSlotValue(0);
+      const slot2_value = picker.getSlotValue(1);
+      const slot3_value = picker.getSlotValue(2);
+
+      let result = [
+        {
+          text: slot1_value.text,
+          value: slot1_value.value
+        }
+      ];
+
+      if (slot2_value && typeof slot2_value === 'object') {
+        result.push({
+          text: slot2_value.text,
+          value: slot2_value.value
+        });
+
+        if (slot3_value && typeof slot3_value === 'object') {
+          result.push({
+            text: slot3_value.text,
+            value: slot3_value.value
+          });
+        }
+      }
+
+      return result;
+    },
+
+    cancel() {
+      this.hide();
+      this.$emit('cancel');
+    },
+
+    confirm() {
+      this.hide();
+      this.$emit('confirm', this.getSelectedResult())
+    },
+
     show() {
       this.$refs.popup.show();
     },
@@ -183,6 +224,7 @@ export default {
     padding-left: 20px;
     padding-right: 20px;
     height: 100%;
+    border-bottom: 1px solid #ebedf0;
 
     .btn-cancel,
     .btn-confirm {

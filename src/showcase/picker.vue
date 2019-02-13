@@ -10,13 +10,15 @@
     <div class="mt-content">
       <h5>级联示例</h5>
       <mt-button size="large" @click.native="showPicker3">三级联动示例 ...</mt-button>
-      <p>你选择的结果是: 北京市 东城区</p>
+      <p>你选择的结果是: {{ cityData3Result }}</p>
     </div>
 
     <mt-picker
       :pickerData="cityData3"
       ref="picker3"
-    ></mt-picker>
+      @confirm="pickerCity3Confirm"
+      @cancel="pickerCancel"
+    >城市选择</mt-picker>
   </div>
 </template>
 
@@ -43,6 +45,17 @@ export default {
   methods: {
     showPicker3() {
       this.$refs.picker3.show();
+    },
+
+    pickerCity3Confirm(item) {
+      this.cityData3Result = item[0].text + ' ' + item[1].text + ' ' + item[2].text;
+    },
+
+    // 点击取消按钮
+    pickerCancel() {
+      const Console = console;
+
+      Console.log('click cencel');
     }
   }
 };
