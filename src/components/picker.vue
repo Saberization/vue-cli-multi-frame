@@ -1,23 +1,37 @@
 <template>
-  <mt-picker
-    :slots="slots"
-    :valueKey="valueKey"
-    :showToolbar="showToolbar"
-    :visibleItemCount="visibleItemCount"
-    :itemHeight="itemHeight"
-    @change="onValuesChange"
+  <mt-popup
+    position="bottom"
+    ref="popup"
+    :modal="modal"
+    :closeOnClickModal="closeOnClickModal"
   >
-    <slot></slot>
-  </mt-picker>
+    <mt-picker
+      :slots="slots"
+      :valueKey="valueKey"
+      :showToolbar="showToolbar"
+      :visibleItemCount="visibleItemCount"
+      :itemHeight="itemHeight"
+      @change="onValuesChange"
+      ref="picker"
+    >
+      <mt-button size="small" :class="{ 'btn-cancel': true }">取消</mt-button>
+      <slot></slot>
+      <mt-button size="small" :class="{ 'btn-confirm': true }">确定</mt-button>
+    </mt-picker>
+  </mt-popup>
 </template>
 
 <script>
 import { Picker } from "mint-ui";
+import Popup from "@components/popup";
+import Button from "@components/button";
 
 export default {
   name: "Picker",
   components: {
-    "mt-picker": Picker
+    "mt-picker": Picker,
+    "mt-popup": Popup,
+    "mt-button": Button
   },
   props: {
     // slot 对象数组
@@ -35,7 +49,7 @@ export default {
     // 是否在组件顶部显示一个 toolbar，内容自定义
     showToolbar: {
       type: Boolean,
-      default: false
+      default: true
     },
     // slot 中可见备选值的个数
     visibleItemCount: {
@@ -45,7 +59,15 @@ export default {
     // 每个 slot 的高度
     itemHeight: {
       type: Number,
-      default: 36
+      default: 40
+    },
+    modal: {
+      type: Boolean,
+      default: true
+    },
+    closeOnClickModal: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -64,16 +86,54 @@ export default {
   methods: {
     onValuesChange(picker, values) {
       const children = values[0].children;
+      const slot1_value = picker.getSlotValue(0) || {};
+
+      let result = [
+        {
+          text: slot1_value.text,
+          value: slot1_value.value
+        }
+      ];
 
       if (children && Array.isArray(children)) {
         picker.setSlotValues(1, children);
+
+        const slot2_value = picker.getSlotValue(1) || {};
+
+        result.push({
+          text: slot2_value.text,
+          value: slot2_value.value
+        });
 
         const _children = values[1].children;
 
         if (_children && Array.isArray(_children)) {
           picker.setSlotValues(2, _children);
+
+          const slot3_value = picker.getSlotValue(2) || {};
+
+          result.push({
+            text: slot3_value.text,
+            value: slot3_value.value
+          });
         }
       }
+
+      if (result[0].text) {
+        this.$emit("change", result);
+      }
+    },
+
+    show() {
+      this.$refs.popup.show();
+    },
+
+    hide() {
+      this.$refs.popup.hide();
+    },
+
+    toggle() {
+      this.$refs.popup.toggle();
     }
   },
   created() {
@@ -112,12 +172,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.picker {
+  background-color: #fff;
+
   .picker-items {
     justify-content: space-around;
-
-    .picker-item {
-      width: 105px !important;
-    }
   }
+}
 </style>

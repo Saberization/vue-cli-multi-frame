@@ -58,4 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
+  .mint-popup-bottom {
+    width: 100%;
+  }
 </style>
