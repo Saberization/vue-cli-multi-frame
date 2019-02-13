@@ -50,10 +50,7 @@ export default {
   },
   data() {
     return {
-      slots: [],
-      values1: [],
-      values2: [],
-      values3: []
+      slots: []
     };
   },
   watch: {
@@ -66,17 +63,27 @@ export default {
   },
   methods: {
     onValuesChange(picker, values) {
-      console.log(values);
+      const children = values[0].children;
+
+      if (children && Array.isArray(children)) {
+        picker.setSlotValues(1, children);
+
+        const _children = values[1].children;
+
+        if (_children && Array.isArray(_children)) {
+          picker.setSlotValues(2, _children);
+        }
+      }
     }
   },
   created() {
     const pickerData = this.pickerData;
-    const that = this;
 
     if (pickerData && Array.isArray(pickerData)) {
       const slots = this.slots;
 
       slots[0] = {
+        flex: 1,
         values: pickerData,
         className: "slot1"
       };
@@ -85,6 +92,7 @@ export default {
 
       if (children && Array.isArray(children)) {
         slots[1] = {
+          flex: 1,
           values: children,
           className: "slot2"
         };
@@ -93,6 +101,7 @@ export default {
 
         if (_children && Array.isArray(_children)) {
           slots[2] = {
+            flex: 1,
             values: _children,
             className: "slot3"
           };
@@ -104,4 +113,11 @@ export default {
 </script>
 
 <style lang="scss">
+  .picker-items {
+    justify-content: space-around;
+
+    .picker-item {
+      width: 105px !important;
+    }
+  }
 </style>
