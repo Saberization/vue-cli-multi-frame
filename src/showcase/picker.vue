@@ -8,26 +8,47 @@
     </mt-header>
 
     <div class="mt-content">
+      <h5>普通示例</h5>
+      <mt-button
+        size="large"
+        @click.native="showPicker"
+      >一级联动示例 ...</mt-button>
+      <p>你选择的结果是: {{ pickerDataResult }}</p>
+
       <h5>级联示例</h5>
-      <mt-button size="large" @click.native="showPicker2">二级联动示例 ...</mt-button>
+      <mt-button
+        size="large"
+        @click.native="showPicker2"
+      >二级联动示例 ...</mt-button>
       <p>你选择的结果是: {{ cityData2Result }}</p>
-      <mt-button size="large" @click.native="showPicker3">三级联动示例 ...</mt-button>
+
+      <mt-button
+        size="large"
+        @click.native="showPicker3"
+      >三级联动示例 ...</mt-button>
       <p>你选择的结果是: {{ cityData3Result }}</p>
     </div>
+
+    <mt-picker
+      :pickerData="pickerData"
+      ref="picker"
+      @confirm="pickerConfirm"
+      @cancel="pickerCancel"
+    >一级联动</mt-picker>
 
     <mt-picker
       :pickerData="cityData"
       ref="picker2"
       @confirm="pickerCity2Confirm"
       @cancel="pickerCancel"
-    >城市选择</mt-picker>
+    >城市选择 - 二级联动</mt-picker>
 
     <mt-picker
       :pickerData="cityData3"
       ref="picker3"
       @confirm="pickerCity3Confirm"
       @cancel="pickerCancel"
-    >城市选择</mt-picker>
+    >城市选择 - 三级联动</mt-picker>
   </div>
 </template>
 
@@ -47,13 +68,28 @@ export default {
   },
   data() {
     return {
+      pickerData: [{
+        value: '1',
+        text: '逢坂大河'
+      }, {
+        value: '2',
+        text: '远坂凛'
+      }, {
+        value: '3',
+        text: 'Saber'
+      }],
       cityData: cityData,
       cityData3: cityData3,
       cityData3Result: "",
-      cityData2Result: ""
+      cityData2Result: "",
+      pickerDataResult: ""
     };
   },
   methods: {
+    showPicker() {
+      this.$refs.picker.show();
+    },
+
     showPicker2() {
       this.$refs.picker2.show();
     },
@@ -62,19 +98,24 @@ export default {
       this.$refs.picker3.show();
     },
 
+    pickerConfirm(item) {
+      this.pickerDataResult = item[0].text;
+    },
+
     pickerCity2Confirm(item) {
-      this.cityData2Result = item[0].text + ' ' + item[1].text;
+      this.cityData2Result = item[0].text + " " + item[1].text;
     },
 
     pickerCity3Confirm(item) {
-      this.cityData3Result = item[0].text + ' ' + item[1].text + ' ' + item[2].text;
+      this.cityData3Result =
+        item[0].text + " " + item[1].text + " " + item[2].text;
     },
 
     // 点击取消按钮
     pickerCancel() {
       const Console = console;
 
-      Console.log('click cencel');
+      Console.log("click cencel");
     }
   }
 };
