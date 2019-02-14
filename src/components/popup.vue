@@ -53,7 +53,25 @@ export default {
     toggle() {
       this.popupVisible = !this.popupVisible;
     }
-  }
+  },
+  watch: {
+    popupVisible(newValue) {
+      if (newValue) {
+        document.getElementsByTagName('body')[0].addEventListener('touchmove', e => {
+          e.preventDefault();
+        }, {
+          passive: false
+        });
+      }
+      else {
+        document.getElementsByTagName('body')[0].addEventListener('touchmove', e => {
+          e.returnValue = true;
+        }, {
+          passive: false
+        });
+      }
+    }
+  },
 };
 </script>
 

@@ -16,13 +16,11 @@
 
 <script>
 import { Header } from "mint-ui";
-import Button from "./button";
 
 export default {
   name: "Header",
   components: {
-    "mt-header": Header,
-    "mt-button": Button
+    "mt-header": Header
   },
   props: {
     fixed: {
