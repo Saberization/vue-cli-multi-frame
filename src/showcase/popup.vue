@@ -68,7 +68,11 @@
     <mt-popup
       position="bottom"
       ref="bottomPopup"
-    >123</mt-popup>
+      :modal="false"
+      :class="{ 'mint-popup-2': true }"
+    >
+      <p>更新成功</p>
+    </mt-popup>
   </div>
 </template>
 
@@ -113,6 +117,10 @@ export default {
 
     showBottomPopup() {
       this.$refs.bottomPopup.show();
+
+      setTimeout(() => {
+        this.$refs.bottomPopup.hide();
+      }, 1200);
     },
 
     closeRightPopup() {

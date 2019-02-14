@@ -68,16 +68,7 @@ export default {
   },
   data() {
     return {
-      pickerData: [{
-        value: '1',
-        text: '逢坂大河'
-      }, {
-        value: '2',
-        text: '远坂凛'
-      }, {
-        value: '3',
-        text: 'Saber'
-      }],
+      pickerData: [],
       cityData: cityData,
       cityData3: cityData3,
       cityData3Result: "",
@@ -87,6 +78,16 @@ export default {
   },
   methods: {
     showPicker() {
+      this.pickerData = [{
+        value: '1',
+        text: '逢坂大河'
+      }, {
+        value: '2',
+        text: '远坂凛'
+      }, {
+        value: '3',
+        text: 'Saber'
+      }];
       this.$refs.picker.show();
     },
 

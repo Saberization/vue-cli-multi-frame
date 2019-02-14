@@ -6,7 +6,7 @@
     :closeOnClickModal="closeOnClickModal"
   >
     <mt-picker
-      :slots="slots"
+      :slots.sync="slots"
       :valueKey="valueKey"
       :showToolbar="showToolbar"
       :visibleItemCount="visibleItemCount"
@@ -81,13 +81,14 @@ export default {
     pickerData: {
       handler(newValue) {
         this.slots = newValue;
+        this.onValuesChange();
       },
       deep: true
     }
   },
   methods: {
     onValuesChange(picker, values) {
-      const children = values[0].children;
+      const children = values.length >= 1 && values[0].children || [];
       const slot1_value = picker.getSlotValue(0) || {};
 
       let result = [
@@ -97,7 +98,7 @@ export default {
         }
       ];
 
-      if (children && Array.isArray(children)) {
+      if (children && Array.isArray(children) && children.length >= 1) {
         picker.setSlotValues(1, children);
 
         const slot2_value = picker.getSlotValue(1) || {};
@@ -109,7 +110,7 @@ export default {
 
         const _children = values[1].children;
 
-        if (_children && Array.isArray(_children)) {
+        if (_children && Array.isArray(_children) && _children.length >= 1) {
           picker.setSlotValues(2, _children);
 
           const slot3_value = picker.getSlotValue(2) || {};
@@ -182,7 +183,7 @@ export default {
   created() {
     const pickerData = this.pickerData;
 
-    if (pickerData && Array.isArray(pickerData)) {
+    if (pickerData && Array.isArray(pickerData) && pickerData.length >= 1) {
       const slots = this.slots;
 
       slots[0] = {
@@ -193,7 +194,7 @@ export default {
 
       const children = pickerData[0].children;
 
-      if (children && Array.isArray(children)) {
+      if (children && Array.isArray(children) && children.length >= 1) {
         slots[1] = {
           flex: 1,
           values: children,
@@ -202,7 +203,7 @@ export default {
 
         const _children = children[0].children;
 
-        if (_children && Array.isArray(_children)) {
+        if (_children && Array.isArray(_children) && _children.length >= 1) {
           slots[2] = {
             flex: 1,
             values: _children,

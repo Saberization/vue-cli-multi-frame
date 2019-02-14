@@ -225,9 +225,15 @@ export default {
     right: 0;
     bottom: 0;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   .mint-loadmore {
     overflow: visible !important;
+    -webkit-overflow-scrolling: touch;
+
+    .mint-loadmore-content {
+      -webkit-overflow-scrolling: touch;
+    }
   }
 </style>
