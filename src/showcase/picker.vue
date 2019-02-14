@@ -9,9 +9,18 @@
 
     <div class="mt-content">
       <h5>级联示例</h5>
+      <mt-button size="large" @click.native="showPicker2">二级联动示例 ...</mt-button>
+      <p>你选择的结果是: {{ cityData2Result }}</p>
       <mt-button size="large" @click.native="showPicker3">三级联动示例 ...</mt-button>
       <p>你选择的结果是: {{ cityData3Result }}</p>
     </div>
+
+    <mt-picker
+      :pickerData="cityData"
+      ref="picker2"
+      @confirm="pickerCity2Confirm"
+      @cancel="pickerCancel"
+    >城市选择</mt-picker>
 
     <mt-picker
       :pickerData="cityData3"
@@ -38,13 +47,23 @@ export default {
   },
   data() {
     return {
+      cityData: cityData,
       cityData3: cityData3,
-      cityData3Result: ""
+      cityData3Result: "",
+      cityData2Result: ""
     };
   },
   methods: {
+    showPicker2() {
+      this.$refs.picker2.show();
+    },
+
     showPicker3() {
       this.$refs.picker3.show();
+    },
+
+    pickerCity2Confirm(item) {
+      this.cityData2Result = item[0].text + ' ' + item[1].text;
     },
 
     pickerCity3Confirm(item) {
@@ -70,10 +89,8 @@ export default {
     padding: 10px;
 
     p {
-      padding-left: 10px;
-      margin-top: 10px;
-      text-align: center;
       font-size: 16px;
+      margin-bottom: 25px;
     }
 
     h5 {
@@ -86,6 +103,7 @@ export default {
 
     button {
       color: #000;
+      margin-bottom: 10px;
     }
   }
 }
