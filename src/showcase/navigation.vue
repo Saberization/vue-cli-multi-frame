@@ -71,7 +71,8 @@ export default {
             },
             {
               title: 'Lazy load',
-              icon: 'lazyload'
+              icon: 'lazyload',
+              to: '/lazyload'
             },
             {
               title: 'Range',

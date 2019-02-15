@@ -23,7 +23,6 @@
 import Header from "@components/header";
 import Button from "@components/button";
 import Gallery from "@components/gallery";
-import Util from "@util";
 
 export default {
   name: "Gallery",

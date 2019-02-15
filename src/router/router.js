@@ -10,6 +10,7 @@ import ActionSheet from '@showcase/actionsheet'
 import Popup from '@showcase/popup'
 import Picker from '@showcase/picker'
 import Gallery from '@showcase/gallery'
+import LazyLoad from '@showcase/lazyload'
 
 const routes = [{
   path: '*',
@@ -50,6 +51,9 @@ const routes = [{
 }, {
   path: '/gallery',
   component: Gallery
+}, {
+  path: '/lazyload',
+  component: LazyLoad
 }]
 
 export default routes
