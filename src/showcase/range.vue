@@ -9,8 +9,12 @@
 
     <div class="mt-body">
       <p>基本功能</p>
-      <mt-cell title="默认" :isLink="false" :label="'value: ' + value">
-        <mt-range v-model="value"></mt-range>
+      <mt-cell title="默认" :isLink="false" :label="'value: ' + value1">
+        <mt-range v-model="value1"></mt-range>
+      </mt-cell>
+
+      <mt-cell title="预设 Value" :isLink="false" :label="'value: ' + value2">
+        <mt-range v-model="value2" :setValue="value2"></mt-range>
       </mt-cell>
     </div>
   </div>
@@ -32,7 +36,8 @@ export default {
   },
   data() {
     return {
-      value: 0
+      value1: 0,
+      value2: 20
     }
   }
 };
