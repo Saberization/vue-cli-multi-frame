@@ -6,7 +6,7 @@
     :closeOnClickModal="closeOnClickModal"
   >
     <mt-picker
-      :slots.sync="slots"
+      :slots="slots"
       :valueKey="valueKey"
       :showToolbar="showToolbar"
       :visibleItemCount="visibleItemCount"
@@ -15,9 +15,17 @@
       ref="picker"
     >
       <div class="picker-toolbar-con">
-        <mt-button size="small" :class="{ 'btn-cancel': true }" @click.native="cancel">取消</mt-button>
+        <mt-button
+          size="small"
+          :class="{ 'btn-cancel': true }"
+          @click.native="cancel"
+        >取消</mt-button>
         <slot></slot>
-        <mt-button size="small" :class="{ 'btn-confirm': true }" @click.native="confirm">确定</mt-button>
+        <mt-button
+          size="small"
+          :class="{ 'btn-confirm': true }"
+          @click.native="confirm"
+        >确定</mt-button>
       </div>
     </mt-picker>
   </mt-popup>
@@ -72,23 +80,45 @@ export default {
       default: true
     }
   },
-  data() {
-    return {
-      slots: []
-    };
-  },
-  watch: {
-    pickerData: {
-      handler(newValue) {
-        this.slots = newValue;
-        this.onValuesChange();
-      },
-      deep: true
+  computed: {
+    slots: function() {
+      const pickerData = this.pickerData;
+      let result = [];
+
+      if (pickerData && Array.isArray(pickerData) && pickerData.length >= 1) {
+        result[0] = {
+          flex: 1,
+          values: pickerData,
+          className: "slot1"
+        };
+
+        const children = pickerData[0].children;
+
+        if (children && Array.isArray(children) && children.length >= 1) {
+          result[1] = {
+            flex: 1,
+            values: children,
+            className: "slot2"
+          };
+
+          const _children = children[0].children;
+
+          if (_children && Array.isArray(_children) && _children.length >= 1) {
+            result[2] = {
+              flex: 1,
+              values: _children,
+              className: "slot3"
+            };
+          }
+        }
+      }
+
+      return result;
     }
   },
   methods: {
     onValuesChange(picker, values) {
-      const children = values.length >= 1 && values[0].children || [];
+      const children = (values.length >= 1 && values[0].children) || [];
       const slot1_value = picker.getSlotValue(0) || {};
 
       let result = [
@@ -141,13 +171,13 @@ export default {
         }
       ];
 
-      if (slot2_value && typeof slot2_value === 'object') {
+      if (slot2_value && typeof slot2_value === "object") {
         result.push({
           text: slot2_value.text,
           value: slot2_value.value
         });
 
-        if (slot3_value && typeof slot3_value === 'object') {
+        if (slot3_value && typeof slot3_value === "object") {
           result.push({
             text: slot3_value.text,
             value: slot3_value.value
@@ -160,12 +190,12 @@ export default {
 
     cancel() {
       this.hide();
-      this.$emit('cancel');
+      this.$emit("cancel");
     },
 
     confirm() {
       this.hide();
-      this.$emit('confirm', this.getSelectedResult())
+      this.$emit("confirm", this.getSelectedResult());
     },
 
     show() {
@@ -178,39 +208,6 @@ export default {
 
     toggle() {
       this.$refs.popup.toggle();
-    }
-  },
-  created() {
-    const pickerData = this.pickerData;
-
-    if (pickerData && Array.isArray(pickerData) && pickerData.length >= 1) {
-      const slots = this.slots;
-
-      slots[0] = {
-        flex: 1,
-        values: pickerData,
-        className: "slot1"
-      };
-
-      const children = pickerData[0].children;
-
-      if (children && Array.isArray(children) && children.length >= 1) {
-        slots[1] = {
-          flex: 1,
-          values: children,
-          className: "slot2"
-        };
-
-        const _children = children[0].children;
-
-        if (_children && Array.isArray(_children) && _children.length >= 1) {
-          slots[2] = {
-            flex: 1,
-            values: _children,
-            className: "slot3"
-          };
-        }
-      }
     }
   }
 };
@@ -240,5 +237,4 @@ export default {
     }
   }
 }
-
 </style>
