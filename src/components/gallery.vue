@@ -16,6 +16,8 @@
       <img
         class="swipe-item-img"
         :src="v.pic"
+        :data-guid="v.guid"
+        @click="swipeItemClick($event)"
         alt=""
       />
       <p class="swipe-item-title" v-if="v.title && v.title != ''">{{ v.title }}</p>
@@ -67,7 +69,7 @@ export default {
     // 是否在 touchstart 事件触发时阻止事件的默认行为。设为 true 可提高运行在低版本安卓浏览器时的性能
     prevent: {
       type: Boolean,
-      default: true
+      default: false
     },
     // 是否在 touchstart 事件触发时阻止冒泡。
     stopPropagation: {
@@ -80,6 +82,11 @@ export default {
     },
     minImgHeight: {
       default: null
+    }
+  },
+  methods: {
+    swipeItemClick(e) {
+      this.$emit('click', e.target.dataset.guid || '');
     }
   }
 };
@@ -103,5 +110,6 @@ export default {
     background: rgba(14, 14, 14, 0.43);
     overflow: hidden;
     text-overflow: ellipsis;
+     white-space:nowrap;
   }
 </style>

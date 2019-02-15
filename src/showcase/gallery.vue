@@ -8,9 +8,12 @@
     </mt-header>
 
     <div class="mt-body">
+      <!-- 如果不需要点击轮播图，建议将 prevent 设为 true 可提高运行在低版本安卓浏览器时的性能 -->
       <mt-gallery
         :data="galleryData"
+        :prevent="false"
         maxImgHeight="250px"
+        @click="itemClick"
       ></mt-gallery>
     </div>
   </div>
@@ -20,6 +23,7 @@
 import Header from "@components/header";
 import Button from "@components/button";
 import Gallery from "@components/gallery";
+import Util from "@util";
 
 export default {
   name: "Gallery",
@@ -34,7 +38,7 @@ export default {
         {
           guid: "47ee3fc6-ce5f-40b2-8abc-68bc3091f830",
           title:
-            "testgaller1多了内容会有省略号省略号省略号省略号省略号省略号省略号省略号省略号",
+            "testgaller1多了内容会有省略号省略号省略号省略号省略号省略号省略号",
           pic:
             "https://fe.epoint.com.cn/m7showcase/showcase/widgets/gallery/images/testgallery1.jpg"
         },
@@ -52,6 +56,13 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    itemClick(guid) {
+      let Console = console;
+
+      Console.log("点击了：" + guid);
+    }
   }
 };
 </script>
