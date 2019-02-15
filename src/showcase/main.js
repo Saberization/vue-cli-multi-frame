@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 import routes from '@router/router'
 import ShowCase from './showcase.vue'
 import '@assets/css/common.css'
-
 import LazyLoad from 'mint-ui';
 
 Vue.use(Vuex)

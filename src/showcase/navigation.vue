@@ -76,7 +76,8 @@ export default {
             },
             {
               title: 'Range',
-              icon: 'range'
+              icon: 'range',
+              to: '/range'
             },
             {
               title: 'Progress',

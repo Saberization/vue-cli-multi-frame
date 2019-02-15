@@ -3,7 +3,7 @@
     :title="title"
     :value="value"
     :label="label"
-    :is-link="'is-link'"
+    :is-link="isLink"
     :to="to"
     :icon="icon"
   >
@@ -23,12 +23,12 @@ export default {
     title: String,
     value: String,
     label: String,
-    "is-link": {
+    to: String,
+    icon: String,
+    isLink: {
       type: Boolean,
       default: true
-    },
-    to: String,
-    icon: String
+    }
   }
 };
 </script>

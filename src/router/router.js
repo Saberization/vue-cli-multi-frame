@@ -11,6 +11,7 @@ import Popup from '@showcase/popup'
 import Picker from '@showcase/picker'
 import Gallery from '@showcase/gallery'
 import LazyLoad from '@showcase/lazyload'
+import Range from '@showcase/range'
 
 const routes = [{
   path: '*',
@@ -54,6 +55,9 @@ const routes = [{
 }, {
   path: '/lazyload',
   component: LazyLoad
+}, {
+  path: '/range',
+  component: Range
 }]
 
 export default routes
