@@ -12,6 +12,7 @@
           v-for="(v, i) in imgList"
           :key="i"
         >
+          <!-- 使用 v-lazy 指令来控制图片的懒加载 -->
           <img
             v-lazy="v"
             alt=""
