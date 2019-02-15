@@ -65,9 +65,9 @@ export default {
               to: '/popup'
             },
             {
-              title: 'Gallery Slider',
+              title: 'Gallery',
               icon: 'swipe',
-              to: '/galleryslider'
+              to: '/gallery'
             },
             {
               title: 'Lazy load',

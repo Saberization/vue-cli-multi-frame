@@ -9,7 +9,7 @@ import MessageBox from '@showcase/messagebox'
 import ActionSheet from '@showcase/actionsheet'
 import Popup from '@showcase/popup'
 import Picker from '@showcase/picker'
-import GallerySlider from '@showcase/galleryslider'
+import Gallery from '@showcase/gallery'
 
 const routes = [{
   path: '*',
@@ -48,8 +48,8 @@ const routes = [{
   path: '/picker',
   component: Picker
 }, {
-  path: '/galleryslider',
-  component: GallerySlider
+  path: '/gallery',
+  component: Gallery
 }]
 
 export default routes
