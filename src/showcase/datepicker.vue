@@ -1,0 +1,72 @@
+<template>
+  <div class="container">
+    <mt-header title="DatePicker">
+      <mt-button
+        icon="back"
+        slot="left"
+      >返回</mt-button>
+    </mt-header>
+
+    <div class="mt-body">
+      <mt-button size="large" @click.native="dateTimePicker">点击弹出 DateTime Picker</mt-button>
+      <mt-button size="large" @click.native="datePicker">点击弹出 Date Picker</mt-button>
+      <mt-button size="large" @click.native="timePicker">点击弹出 Time Picker</mt-button>
+      <mt-button size="large" @click.native="customDatePicker">自定义模板</mt-button>
+      <mt-button size="large" @click.native="setDatePicker">设定初始值</mt-button>
+    </div>
+
+    <mt-datepicker ref="datepicker" @confirm="getPickerResult"></mt-datepicker>
+  </div>
+</template>
+
+<script>
+import Header from "@components/header";
+import Button from "@components/button";
+import DatePicker from "@components/datepicker";
+
+export default {
+  name: "Datepicker",
+  components: {
+    "mt-header": Header,
+    "mt-button": Button,
+    "mt-datepicker": DatePicker
+  },
+  methods: {
+    dateTimePicker() {
+      this.$refs.datepicker.show();
+    },
+
+    datePicker() {
+
+    },
+
+    timePicker() {
+
+    },
+
+    customDatePicker() {
+
+    },
+
+    setDatePicker() {
+
+    },
+
+    getPickerResult() {
+
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+  .mt-body {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .mint-button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+</style>

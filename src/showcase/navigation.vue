@@ -91,7 +91,8 @@ export default {
             },
             {
               title: 'Datetime Picker',
-              icon: 'time'
+              icon: 'time',
+              to: '/datepicker'
             },
             {
               title: 'Index List',
