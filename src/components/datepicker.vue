@@ -101,7 +101,7 @@ export default {
         hour = date.getHours(),
         appendZero = this.appendZero;
 
-      return year + '-' + month + '-' + day + ' ' + appendZero(hour) + ':' + appendZero(minutes);
+      this.$emit('confirm', year + '-' + appendZero(month) + '-' + appendZero(day) + ' ' + appendZero(hour) + ':' + appendZero(minutes));
     },
 
     appendZero(num) {

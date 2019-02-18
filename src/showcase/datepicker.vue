@@ -8,14 +8,33 @@
     </mt-header>
 
     <div class="mt-body">
-      <mt-button size="large" @click.native="dateTimePicker">点击弹出 DateTime Picker</mt-button>
-      <mt-button size="large" @click.native="datePicker">点击弹出 Date Picker</mt-button>
-      <mt-button size="large" @click.native="timePicker">点击弹出 Time Picker</mt-button>
-      <mt-button size="large" @click.native="customDatePicker">自定义模板</mt-button>
-      <mt-button size="large" @click.native="setDatePicker">设定初始值</mt-button>
+      <mt-button
+        size="large"
+        @click.native="dateTimePicker"
+      >点击弹出 DateTime Picker</mt-button>
+      <mt-button
+        size="large"
+        @click.native="datePicker"
+      >点击弹出 Date Picker</mt-button>
+      <mt-button
+        size="large"
+        @click.native="timePicker"
+      >点击弹出 Time Picker</mt-button>
+      <mt-button
+        size="large"
+        @click.native="customDatePicker"
+      >自定义模板</mt-button>
+      <mt-button
+        size="large"
+        @click.native="setDatePicker"
+      >设定初始值</mt-button>
     </div>
 
-    <mt-datepicker ref="datepicker" @confirm="getPickerResult"></mt-datepicker>
+    <mt-datepicker
+      ref="datepicker"
+      @confirm="getPickerResult"
+    ></mt-datepicker>
+    <p>当前选择时间：{{ date }}</p>
   </div>
 </template>
 
@@ -31,42 +50,44 @@ export default {
     "mt-button": Button,
     "mt-datepicker": DatePicker
   },
+  data() {
+    return {
+      date: null
+    };
+  },
   methods: {
     dateTimePicker() {
       this.$refs.datepicker.show();
     },
 
-    datePicker() {
+    datePicker() {},
 
-    },
+    timePicker() {},
 
-    timePicker() {
+    customDatePicker() {},
 
-    },
+    setDatePicker() {},
 
-    customDatePicker() {
-
-    },
-
-    setDatePicker() {
-
-    },
-
-    getPickerResult() {
-
+    getPickerResult(result) {
+      this.date = result;
     }
   }
 };
 </script>
 
-<style lang="scss">
-  .mt-body {
-    padding-left: 10px;
-    padding-right: 10px;
+<style lang="scss" scoped>
+.mt-body {
+  padding-left: 10px;
+  padding-right: 10px;
 
-    .mint-button {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
+  .mint-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
+}
+
+p {
+  text-align: center;
+  font-size: 16px;
+}
 </style>
