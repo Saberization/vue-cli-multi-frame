@@ -12,6 +12,7 @@ import Picker from '@showcase/picker'
 import Gallery from '@showcase/gallery'
 import LazyLoad from '@showcase/lazyload'
 import Range from '@showcase/range'
+import Progress from '@showcase/progress'
 
 const routes = [{
   path: '*',
@@ -58,6 +59,9 @@ const routes = [{
 }, {
   path: '/range',
   component: Range
+}, {
+  path: '/progress',
+  component: Progress
 }]
 
 export default routes

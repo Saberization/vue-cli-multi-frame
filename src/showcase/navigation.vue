@@ -81,7 +81,8 @@ export default {
             },
             {
               title: 'Progress',
-              icon: 'progress'
+              icon: 'progress',
+              to: '/progress'
             },
             {
               title: 'Picker',

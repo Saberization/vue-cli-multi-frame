@@ -4,11 +4,11 @@ import VueRouter from 'vue-router'
 import routes from '@router/router'
 import ShowCase from './showcase.vue'
 import '@assets/css/common.css'
-import LazyLoad from 'mint-ui';
+import { Lazyload } from 'mint-ui';
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
-Vue.use(LazyLoad)
+Vue.use(Lazyload)
 
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
