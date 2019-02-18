@@ -1,6 +1,6 @@
 <template>
   <mt-range
-    v-model="rangeValue"
+    v-model="value"
     :min="min"
     :max="max"
     :step="step"
@@ -26,6 +26,10 @@ export default {
   name: "Range",
   components: {
     "mt-range": Range
+  },
+  model: {
+    prop: 'rangeValue',
+    event: 'custom-input'
   },
   props: {
     // 最小值
@@ -53,25 +57,21 @@ export default {
       type: Number,
       default: 1
     },
-    // 预设值
-    setValue: {
-      type: Number,
-      default: 0
-    }
+    rangeValue: Number
   },
   data() {
     return {
-      rangeValue: 0
-    };
+      value: 0
+    }
   },
   methods: {
     changeRange() {
-      this.$emit("input", this.rangeValue);
+      this.$emit('custom-input', this.value);
     }
   },
-  created() {
-    this.rangeValue = this.setValue;
-  },
+  created () {
+    this.value = this.rangeValue;
+  }
 };
 </script>
 

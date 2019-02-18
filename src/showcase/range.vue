@@ -14,7 +14,23 @@
       </mt-cell>
 
       <mt-cell title="预设 Value" :isLink="false" :label="'value: ' + value2">
-        <mt-range v-model="value2" :setValue="value2"></mt-range>
+        <mt-range v-model="value2"></mt-range>
+      </mt-cell>
+
+      <mt-cell title="左右文字" :isLink="false" :label="'value: ' + value3">
+        <mt-range v-model="value3">
+          <div slot="start">0</div>
+          <div slot="end">100</div>
+        </mt-range>
+      </mt-cell>
+
+      <p>自定义</p>
+      <mt-cell title="定义步长" :isLink="false" :label="'value: ' + value4">
+        <mt-range v-model="value4" :step="10"></mt-range>
+      </mt-cell>
+
+      <mt-cell title="定义区间" :isLink="false" :label="'value: ' + value5">
+        <mt-range v-model="value5" :min="10" :max="90"></mt-range>
       </mt-cell>
     </div>
   </div>
@@ -37,7 +53,10 @@ export default {
   data() {
     return {
       value1: 0,
-      value2: 20
+      value2: 20,
+      value3: 0,
+      value4: 0,
+      value5: 10
     }
   }
 };
