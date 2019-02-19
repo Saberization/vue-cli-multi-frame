@@ -1,6 +1,7 @@
 <template>
   <mt-datepicker
     ref="datepicker"
+    v-model="curDate"
     :type="type"
     :cancelText="cancelText"
     :startDate="startDate"
@@ -17,12 +18,16 @@
 </template>
 
 <script>
-import { DatetimePicker } from 'mint-ui';
+import { DatetimePicker } from "mint-ui";
 
 export default {
   name: "Datepicker",
   components: {
     "mt-datepicker": DatetimePicker
+  },
+  model: {
+    prop: 'propCurDate',
+    event: 'updateCurDate'
   },
   props: {
     type: {
@@ -43,7 +48,7 @@ export default {
         const today = new Date(),
           todayYear = today.getFullYear();
 
-        return new Date(todayYear - 10 + '-01-01');
+        return new Date(todayYear - 5 + "-01-01");
       }
     },
     endDate: {
@@ -52,7 +57,7 @@ export default {
         const today = new Date(),
           todayYear = today.getFullYear();
 
-        return new Date(todayYear + 10 + '-12-31');
+        return new Date(todayYear + 10 + "-12-31");
       }
     },
     startHour: {
@@ -65,23 +70,33 @@ export default {
     },
     yearFormat: {
       type: String,
-      default: '{value}'
+      default: "{value}"
     },
     monthFormat: {
       type: String,
-      default: '{value}'
+      default: "{value}"
     },
     dateFormat: {
       type: String,
-      default: '{value}'
+      default: "{value}"
     },
     hourFormat: {
       type: String,
-      default: '{value}'
+      default: "{value}"
     },
     minuteFormat: {
       type: String,
-      default: '{value}'
+      default: "{value}"
+    },
+    propCurDate: {
+      default: function() {
+        return new Date();
+      }
+    }
+  },
+  data() {
+    return {
+      curDate: null
     }
   },
   methods: {
@@ -92,25 +107,52 @@ export default {
     hide() {
       this.$refs.datepicker.close();
     },
-
     confirm(date) {
-      const year = date.getFullYear(),
-        month = date.getMonth() + 1,
-        day = date.getDate(),
-        minutes = date.getMinutes(),
-        hour = date.getHours(),
-        appendZero = this.appendZero;
+      const appendZero = this.appendZero,
+        type = this.type;
 
-      this.$emit('confirm', year + '-' + appendZero(month) + '-' + appendZero(day) + ' ' + appendZero(hour) + ':' + appendZero(minutes));
+      if (type === "datetime" || type === "date") {
+        const year = date.getFullYear(),
+          month = date.getMonth() + 1,
+          day = date.getDate(),
+          minutes = date.getMinutes(),
+          hour = date.getHours();
+
+        if (type === "datetime") {
+          this.$emit(
+            "confirm",
+            year +
+              "-" +
+              appendZero(month) +
+              "-" +
+              appendZero(day) +
+              " " +
+              appendZero(hour) +
+              ":" +
+              appendZero(minutes)
+          );
+        } else if (type === "date") {
+          this.$emit(
+            "confirm",
+            year + "-" + appendZero(month) + "-" + appendZero(day)
+          );
+        }
+      }
+      else if (type === 'time') {
+        this.$emit('confirm', date);
+      }
     },
 
     appendZero(num) {
       if (num < 10) {
-        return '0' + num;
+        return "0" + num;
       }
-      
+
       return num;
-    }
+    },
+  },
+  created() {
+    this.curDate = this.propCurDate;
   }
 };
 </script>

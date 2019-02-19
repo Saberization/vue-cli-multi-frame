@@ -31,7 +31,23 @@
     </div>
 
     <mt-datepicker
+      ref="datetimepicker"
+      v-model="curDate"
+      type="datetime"
+      @confirm="getPickerResult"
+    ></mt-datepicker>
+
+    <mt-datepicker
       ref="datepicker"
+      v-model="curDate"
+      type="date"
+      @confirm="getPickerResult"
+    ></mt-datepicker>
+
+    <mt-datepicker
+      ref="timepicker"
+      v-model="time"
+      type="time"
       @confirm="getPickerResult"
     ></mt-datepicker>
     <p>当前选择时间：{{ date }}</p>
@@ -52,17 +68,24 @@ export default {
   },
   data() {
     return {
-      date: null
+      date: null,
+      type: "datetime",
+      curDate: new Date(),
+      time: '00:00'
     };
   },
   methods: {
     dateTimePicker() {
+      this.$refs.datetimepicker.show();
+    },
+
+    datePicker() {
       this.$refs.datepicker.show();
     },
 
-    datePicker() {},
-
-    timePicker() {},
+    timePicker() {
+      this.$refs.timepicker.show();
+    },
 
     customDatePicker() {},
 
