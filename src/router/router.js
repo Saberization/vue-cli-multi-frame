@@ -14,6 +14,7 @@ import LazyLoad from '@showcase/lazyload'
 import Range from '@showcase/range'
 import Progress from '@showcase/progress'
 import Datepicker from '@showcase/datepicker'
+import Indexlist from '@showcase/indexlist'
 
 const routes = [{
   path: '*',
@@ -66,6 +67,9 @@ const routes = [{
 }, {
   path: '/datepicker',
   component: Datepicker
+}, {
+  path: '/indexlist',
+  component: Indexlist
 }]
 
 export default routes

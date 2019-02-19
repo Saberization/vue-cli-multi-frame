@@ -96,7 +96,8 @@ export default {
             },
             {
               title: 'Index List',
-              icon: 'alphabet'
+              icon: 'alphabet',
+              to: '/indexlist'
             },
             {
               title: 'Palette Button',
