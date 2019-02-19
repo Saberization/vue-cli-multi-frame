@@ -94,6 +94,11 @@ export default {
       }
     }
   },
+  watch: {
+    propCurDate(newValue) {
+      this.curDate = newValue;
+    }
+  },
   data() {
     return {
       curDate: null

@@ -50,6 +50,23 @@
       type="time"
       @confirm="getPickerResult"
     ></mt-datepicker>
+
+    <mt-datepicker
+      ref="customPicker"
+      type="date"
+      v-model="curDate"
+      year-format="{value} 年"
+      month-format="{value} 月"
+      date-format="{value} 日"
+      @confirm="getPickerResult"
+    ></mt-datepicker>
+    
+    <mt-datepicker
+      ref="initTimePicker"
+      type="time"
+      v-model="initTime"
+      @confirm="getPickerResult"
+    ></mt-datepicker>
     <p>当前选择时间：{{ date }}</p>
   </div>
 </template>
@@ -71,7 +88,8 @@ export default {
       date: null,
       type: "datetime",
       curDate: new Date(),
-      time: '00:00'
+      time: '00:00',
+      initTime: '00:00'
     };
   },
   methods: {
@@ -87,9 +105,14 @@ export default {
       this.$refs.timepicker.show();
     },
 
-    customDatePicker() {},
+    customDatePicker() {
+      this.$refs.customPicker.show();
+    },
 
-    setDatePicker() {},
+    setDatePicker() {
+      this.initTime = '04:30';
+      this.$refs.initTimePicker.show();
+    },
 
     getPickerResult(result) {
       this.date = result;
