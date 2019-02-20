@@ -26,6 +26,12 @@ export default {
     "mt-index-list": IndexList,
     "mt-index-section": IndexSection,
     "mt-cell": Cell
+  },
+  props: {
+    type: Array,
+    default: function () {
+      return [];
+    }
   }
 };
 </script>
