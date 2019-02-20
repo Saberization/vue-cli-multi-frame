@@ -141,7 +141,8 @@ export default {
             },
             {
               title: 'TabContainer',
-              icon: 'panel'
+              icon: 'panel',
+              to: '/tabcontainer'
             },
             {
               title: 'Searchbar',

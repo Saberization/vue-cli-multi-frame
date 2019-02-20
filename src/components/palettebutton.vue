@@ -53,11 +53,11 @@
                 this.$emit('show');
             },
 
-            hidelog() {
+            hidelog () {
                 this.$emit('hide');
             },
 
-            togglelog() {
+            togglelog () {
                 this.$emit('toggle');
             }
         }

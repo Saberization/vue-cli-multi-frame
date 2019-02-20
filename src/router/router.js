@@ -16,6 +16,7 @@ import Progress from '@showcase/progress'
 import Datepicker from '@showcase/datepicker'
 import Indexlist from '@showcase/indexlist'
 import PaletteButton from '@showcase/palettebutton'
+import TabContainer from '@showcase/tabcontainer'
 
 const routes = [{
   path: '*',
@@ -74,6 +75,9 @@ const routes = [{
 }, {
   path: '/palettebutton',
   component: PaletteButton
+}, {
+  path: '/tabcontainer',
+  component: TabContainer
 }];
 
 export default routes
