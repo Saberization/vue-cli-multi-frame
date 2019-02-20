@@ -1,17 +1,7 @@
 <template>
   <mt-index-list>
-    <mt-index-section index="A">
-      <mt-cell title="Aaron"></mt-cell>
-      <mt-cell title="Alden"></mt-cell>
-      <mt-cell title="Austin"></mt-cell>
-    </mt-index-section>
-    <mt-index-section index="B">
-      <mt-cell title="Baldwin"></mt-cell>
-      <mt-cell title="Braden"></mt-cell>
-    </mt-index-section>
-    <mt-index-section index="Z">
-      <mt-cell title="Zack"></mt-cell>
-      <mt-cell title="Zane"></mt-cell>
+    <mt-index-section v-for="(v, i) in listdata" :key="i" :index="v.tag">
+      <mt-cell v-for="(_v, _i) in v.children" :key="_i" :title="_v.text" :data-tag="v.tag" :data-attribute="JSON.stringify(_v.attribute)" @click.native="itemClick($event)"></mt-cell>
     </mt-index-section>
   </mt-index-list>
 </template>
@@ -28,13 +18,31 @@ export default {
     "mt-cell": Cell
   },
   props: {
-    type: Array,
-    default: function () {
-      return [];
+    listdata: {
+      type: Array,
+      default: function () {
+        return [];
+      }
+    }
+  },
+  methods: {
+    itemClick(e) {
+      const cell = e.target.parentElement;
+
+      this.$emit('click', {
+        tag: cell.dataset.tag,
+        text: cell.innerText,
+        attribute: JSON.parse(cell.dataset.attribute),
+        el: cell
+      });
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style>
+  html,
+  body {
+    /*touch-action: none;*/
+  }
 </style>
