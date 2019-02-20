@@ -10,6 +10,21 @@
                 <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
                 <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
             </mt-palette-button>
+
+            <mt-palette-button :class="{ 'btn-cls': true }" direction="t" @show="showlog" @hide="hidelog" @toggle="togglelog">
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+            </mt-palette-button>
+
+            <mt-palette-button :class="{ 'btn-cls': true }" direction="lt" @show="showlog" @hide="hidelog" @toggle="togglelog">
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+                <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
+            </mt-palette-button>
         </div>
     </div>
 </template>
@@ -50,6 +65,9 @@
         left: 30px;
         right: 30px;
         bottom: 30px;
+
+        display: flex;
+        justify-content: space-between;
 
         .btn-cls {
             color: #fff;
