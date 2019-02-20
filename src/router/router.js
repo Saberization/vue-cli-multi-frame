@@ -15,6 +15,7 @@ import Range from '@showcase/range'
 import Progress from '@showcase/progress'
 import Datepicker from '@showcase/datepicker'
 import Indexlist from '@showcase/indexlist'
+import PaletteButton from '@showcase/palettebutton'
 
 const routes = [{
   path: '*',
@@ -70,6 +71,9 @@ const routes = [{
 }, {
   path: '/indexlist',
   component: Indexlist
-}]
+}, {
+  path: '/palettebutton',
+  component: PaletteButton
+}];
 
 export default routes

@@ -101,7 +101,8 @@ export default {
             },
             {
               title: 'Palette Button',
-              icon: 'alphabet'
+              icon: 'alphabet',
+              to: '/palettebutton'
             }
           ]
         },
