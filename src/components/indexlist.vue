@@ -39,10 +39,3 @@ export default {
   }
 };
 </script>
-
-<style>
-  html,
-  body {
-    /*touch-action: none;*/
-  }
-</style>

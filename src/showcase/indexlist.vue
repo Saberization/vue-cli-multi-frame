@@ -149,10 +149,3 @@ export default {
   }
 }
 </script>
-
-<style type="scss">
-  html,
-  body {
-    touch-action: none;
-  }
-</style>
