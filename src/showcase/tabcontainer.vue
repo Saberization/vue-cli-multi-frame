@@ -8,10 +8,24 @@
         </mt-header>
 
         <div class="mt-body">
+            <div class="tab-top">
+                <mt-button @click.native="tabChange(1)">tab1</mt-button>
+                <mt-button @click.native="tabChange(2)">tab2</mt-button>
+                <mt-button @click.native="tabChange(3)">tab3</mt-button>
+            </div>
+
             <!-- 核心代码 -->
-            <mt-tab-container v-model="active">
+            <mt-tab-container v-model="active" :swipeable="true">
                 <mt-tab-container-item id="tab-container1">
-                    <mt-cell v-for="v in 12" :key="v" :title="'tab-container' + v"></mt-cell>
+                    <mt-cell v-for="v in 12" :key="v" title="tab-container1"></mt-cell>
+                </mt-tab-container-item>
+
+                <mt-tab-container-item id="tab-container2">
+                    <mt-cell v-for="v in 12" :key="v" title="tab-container2"></mt-cell>
+                </mt-tab-container-item>
+
+                <mt-tab-container-item id="tab-container3">
+                    <mt-cell v-for="v in 12" :key="v" title="tab-container3"></mt-cell>
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
@@ -37,10 +51,22 @@
             return {
                 active: 'tab-container1'
             }
+        },
+        methods: {
+            tabChange(index) {
+                this.active = 'tab-container' + index;
+            }
         }
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    .tab-top {
+        margin-top: 10px;
+        margin-bottom: 10px;
 
+        .mint-button {
+            margin-left: 15px;
+        }
+    }
 </style>
