@@ -8,6 +8,7 @@
         :icon="icon"
     >
         <slot></slot>
+        <slot name="icon" slot="icon"></slot>
     </mt-cell>
 </template>
 

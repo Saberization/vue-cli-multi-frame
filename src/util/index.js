@@ -9,10 +9,15 @@ const openPage = function (url) {
   let pathname = location.pathname
 
   if (typeof pathname === 'string') {
-    let pathArr = pathname.split('/')
+    if (url.indexOf('http') !== -1) {
+      location.href = url;
+    }
+    else {
+      let pathArr = pathname.split('/')
 
-    pathArr.length = pathArr.length - 1
-    location.href = location.protocol + '//' + location.host + pathArr.join('/') + '/' + url
+      pathArr.length = pathArr.length - 1
+      location.href = location.protocol + '//' + location.host + pathArr.join('/') + '/' + url
+    }
   }
 }
 

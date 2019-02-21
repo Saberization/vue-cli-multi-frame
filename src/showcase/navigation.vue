@@ -129,7 +129,8 @@ export default {
             },
             {
               title: 'Cell',
-              icon: 'cell'
+              icon: 'cell',
+              to: '/cell'
             },
             {
               title: 'Cell Swipe',
