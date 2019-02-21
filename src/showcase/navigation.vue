@@ -134,7 +134,8 @@ export default {
             },
             {
               title: 'Cell Swipe',
-              icon: 'cell'
+              icon: 'cell',
+              to: '/cellswipe'
             },
             {
               title: 'Spinner',

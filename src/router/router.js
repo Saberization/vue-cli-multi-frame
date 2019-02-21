@@ -18,6 +18,7 @@ import Indexlist from '@showcase/indexlist'
 import PaletteButton from '@showcase/palettebutton'
 import TabContainer from '@showcase/tabcontainer'
 import Cell from '@showcase/cell'
+import CellSwipe from '@showcase/cellswipe'
 
 const routes = [{
   path: '*',
@@ -82,6 +83,9 @@ const routes = [{
 }, {
   path: '/cell',
   component: Cell
+}, {
+  path: '/cellswipe',
+  component: CellSwipe
 }];
 
 export default routes
