@@ -22,6 +22,8 @@
             <mt-cell title="标题" label="描述信息"></mt-cell>
             <mt-cell title="原生跳转" label="跳转到 https://github.com/saberization" @click.native="openPage('https://github.com/saberization')">
             </mt-cell>
+            <mt-cell title="路由跳转" label="跳转到 #navigation" to="/navigation">
+            </mt-cell>
         </div>
     </div>
 </template>
