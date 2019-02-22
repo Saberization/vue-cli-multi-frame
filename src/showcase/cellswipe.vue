@@ -4,7 +4,7 @@
             <mt-button icon="back" slot="left">返回</mt-button>
         </mt-header>
 
-        <div class="mt-body">
+        <div class="mt-content">
             <mt-cell-swipe title="左滑显示删除按钮" :right="rightSwipe"></mt-cell-swipe>
             <mt-cell-swipe title="右滑显示删除按钮"></mt-cell-swipe>
         </div>
@@ -49,7 +49,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

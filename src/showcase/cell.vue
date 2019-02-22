@@ -4,7 +4,7 @@
             <mt-button icon="back" slot="left">返回</mt-button>
         </mt-header>
 
-        <div class="mt-body">
+        <div class="mt-content">
             <mt-cell title="标题文字" :isLink="false"></mt-cell>
             <mt-cell title="标题文字" :isLink="false">说明文字</mt-cell>
             <mt-cell title="标题文字" icon="more" :isLink="false">带 icon</mt-cell>

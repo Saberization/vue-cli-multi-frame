@@ -3,7 +3,7 @@
     <mt-header title="Button">
       <mt-button icon="back" slot="left">返回</mt-button>
     </mt-header>
-    <div class="content">
+    <div class="mt-content">
       <div class="page-button-group">
         <mt-button type="default" size="large">default</mt-button>
         <mt-button type="primary" size="large">primary</mt-button>
@@ -54,9 +54,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .content {
-    margin-top: 40px;
-    padding: 10px;
+  .mt-content {
+    padding-left: 10px;
+    padding-right: 10px;
 
     .page-button-group > * {
       margin-bottom: 15px;

@@ -7,7 +7,7 @@
             >返回</mt-button>
         </mt-header>
 
-        <div class="mt-body">
+        <div class="mt-content">
             <div class="tab-top">
                 <mt-button @click.native="tabChange(1)">tab1</mt-button>
                 <mt-button @click.native="tabChange(2)">tab2</mt-button>
@@ -62,7 +62,6 @@
 
 <style lang="scss" scoped>
     .tab-top {
-        margin-top: 10px;
         margin-bottom: 10px;
 
         .mint-button {
