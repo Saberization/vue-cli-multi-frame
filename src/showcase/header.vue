@@ -24,6 +24,7 @@
 <script>
 import Header from "@components/header";
 import Button from "@components/button";
+import { MessageBox } from "mint-ui";
 
 export default {
   name: "Header",
@@ -42,7 +43,7 @@ export default {
   },
   methods: {
     rightBtn() {
-      console.log('click header right');
+      MessageBox('提示', 'click');
     }
   },
 };
@@ -54,6 +55,22 @@ export default {
 
     &:first-child {
       margin-top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 20px;
+    }
+
+    &:nth-child(3) {
+      top: 80px;
+    }
+
+    &:nth-child(4) {
+      top: 140px;
+    }
+
+    &:last-child {
+      top: 200px;
     }
   }
 </style>

@@ -127,7 +127,8 @@ export default {
   height: 100%;
 
   .mt-content {
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     p {
       font-size: 16px;

@@ -7,7 +7,7 @@
       >返回</mt-button>
     </mt-header>
 
-    <div class="mt-body">
+    <div class="mt-content">
       <mt-cell
         title="默认"
         :isLink="false"
@@ -103,7 +103,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mt-body {
+.mt-content {
   .mint-cell /deep/ .mint-cell-value {
     flex: 2.5;
   }

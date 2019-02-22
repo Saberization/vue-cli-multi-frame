@@ -71,7 +71,8 @@ export default {
 
 <style lang="scss" scoped>
 .mt-content {
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   .mint-button {
     margin-bottom: 15px;

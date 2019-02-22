@@ -7,7 +7,7 @@
       >返回</mt-button>
     </mt-header>
 
-    <div class="mt-body">
+    <div class="mt-content">
       <mt-button
         size="large"
         @click.native="dateTimePicker"
@@ -60,7 +60,7 @@
       date-format="{value} 日"
       @confirm="getPickerResult"
     ></mt-datepicker>
-    
+
     <mt-datepicker
       ref="initTimePicker"
       type="time"
@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mt-body {
+.mt-content {
   padding-left: 10px;
   padding-right: 10px;
 

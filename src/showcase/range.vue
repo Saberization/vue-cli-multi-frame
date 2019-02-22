@@ -7,7 +7,7 @@
       >返回</mt-button>
     </mt-header>
 
-    <div class="mt-body">
+    <div class="mt-content">
       <p>基本功能</p>
       <mt-cell title="默认" :isLink="false" :label="'value: ' + value1">
         <mt-range v-model="value1"></mt-range>

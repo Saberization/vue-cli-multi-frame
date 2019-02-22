@@ -4,7 +4,7 @@
             <mt-button icon="back" slot="left">返回</mt-button>
         </mt-header>
 
-        <div class="mt-body">
+        <div class="mt-content">
             <mt-palette-button :class="{ 'btn-cls': true }" direction="rt" @show="showlog" @hide="hidelog" @toggle="togglelog">
                 <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
                 <div class="my-icon-button indexicon icon-popup palette-button-4-sub-0"></div>
@@ -60,7 +60,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .mt-body {
+    .mt-content {
         position: absolute;
         left: 30px;
         right: 30px;

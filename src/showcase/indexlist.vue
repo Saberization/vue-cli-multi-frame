@@ -4,7 +4,7 @@
       <mt-button icon="back" slot="left">返回</mt-button>
     </mt-header>
 
-    <div class="mt-body">
+    <div class="mt-content">
       <mt-index-list :listdata="listdata" @click="itemClick($event)"></mt-index-list>
     </div>
   </div>
