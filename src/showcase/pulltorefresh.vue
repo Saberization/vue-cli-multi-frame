@@ -6,7 +6,7 @@
         slot="left"
       >返回</mt-button>
     </mt-header>
-    <div class="container-body">
+    <div class="mt-content">
       <searchbar
         v-model="searchValue"
         @enter="enter"
@@ -137,8 +137,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul {
-  padding-left: 10px;
-  background-color: #fff;
-}
+  ul {
+    padding-left: 10px;
+    background-color: #fff;
+  }
+
+  .mt-content {
+    padding-top: 40px;
+  }
 </style>

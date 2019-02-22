@@ -7,7 +7,7 @@
       >返回</mt-button>
     </mt-header>
 
-    <div class="container-body">
+    <div class="mt-content">
       <mt-button
         type="default"
         size="large"
@@ -61,8 +61,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container-body {
-  padding: 10px;
+.mt-content {
+  padding-left: 10px;
+  padding-right: 10px;
 
   & > * {
     margin-bottom: 10px;

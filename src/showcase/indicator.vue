@@ -4,7 +4,7 @@
       <mt-button icon="back" slot="left">返回</mt-button>
     </mt-header>
 
-    <div class="container-body">
+    <div class="mt-content">
       <mt-button size="large" @click.native="showWaiting">点击弹出 Indicator</mt-button>
       <mt-button size="large" @click.native="showConfigurationWaiting">可配置 spinner</mt-button>
       <mt-button size="large" @click.native="showTextWaiting">点击弹出带有文字的 Indicator</mt-button>
@@ -59,8 +59,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container-body {
-    padding: 10px;
+  .mt-content {
+    padding-left: 10px;
+    padding-right: 10px;
 
     & > * {
       margin-bottom: 10px;

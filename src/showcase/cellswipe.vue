@@ -42,6 +42,8 @@
                                 Console.log(err);
                             });
                     }
+                }, {
+                    content: '提交'
                 }]
             };
         }
