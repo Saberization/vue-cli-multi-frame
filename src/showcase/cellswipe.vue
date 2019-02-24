@@ -43,7 +43,20 @@
                             });
                     }
                 }, {
-                    content: '提交'
+                    content: '提交',
+                    style: {
+                        background: '#2196F3',
+                        color: '#fff'
+                    },
+                    handler: () => {
+                        MessageBox.confirm("确定是否提交", "提示")
+                            .then(action => {
+                                // 点击确定按钮触发的函数
+                            })
+                            .catch(err => {
+                                // 点击取消按钮触发的函数
+                            });
+                    }
                 }]
             };
         }
