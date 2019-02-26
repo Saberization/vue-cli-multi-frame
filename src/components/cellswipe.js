@@ -49,17 +49,19 @@ export default {
                 props: {
                     title: this.title,
                     icon: this.icon,
-                    to: this.to,
                     value: this.value,
                     label: this.label,
                     isLink: this.isLink,
                     left: this.left,
-                    right: this.right
+                    right: this.right,
+                    to: this.to === '' ? null : this.to
                 }
             },
             [
                 this.$slots.default,
-                this.$slots.icon
+                createElement('slot', {
+                    slot: "icon"
+                }, this.$slots.icon)
             ]
         )
     }

@@ -31,7 +31,7 @@
 <script>
     import Header from "@components/header";
     import Button from "@components/button";
-    import Cell from "@components/cell";
+    import Cell from "@components/cell.js";
     import Util from "@util/";
 
     export default {
