@@ -46,8 +46,7 @@ export default {
   },
   data() {
     return {
-      actions: ["逢坂大河", "远坂凛", "Saber"],
-      showVisible: false
+      actions: ["逢坂大河", "远坂凛", "Saber"]
     };
   },
   methods: {

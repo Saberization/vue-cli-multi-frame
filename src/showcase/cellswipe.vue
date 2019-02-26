@@ -19,7 +19,7 @@
 <script>
     import Header from "@components/header";
     import Button from "@components/button";
-    import Cellswipe from "@components/cellswipe.js";
+    import Cellswipe from "@components/cellswipe";
     import { MessageBox } from "mint-ui";
 
     const Console = console;
