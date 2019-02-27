@@ -5,43 +5,45 @@
         </mt-header>
 
         <div class="mt-content">
+            <mt-cell title="当前选中" :class="{ cut: true }"> {{ selected }} </mt-cell>
+
             <mt-tab-container v-model="selected" :swipeable="true">
                 <mt-tab-container-item id="0">
-                    <mt-cell v-for="v in 12" :key="v" title="菜单一"></mt-cell>
+                    <mt-cell v-for="v in 8" :key="v" title="菜单一"></mt-cell>
                 </mt-tab-container-item>
 
                 <mt-tab-container-item id="1">
-                    <mt-cell v-for="v in 12" :key="v" title="菜单二"></mt-cell>
+                    <mt-cell v-for="v in 8" :key="v" title="菜单二"></mt-cell>
                 </mt-tab-container-item>
 
                 <mt-tab-container-item id="2">
-                    <mt-cell v-for="v in 12" :key="v" title="菜单三"></mt-cell>
+                    <mt-cell v-for="v in 8" :key="v" title="菜单三"></mt-cell>
                 </mt-tab-container-item>
 
                 <mt-tab-container-item id="3">
-                    <mt-cell v-for="v in 12" :key="v" title="菜单四"></mt-cell>
+                    <mt-cell v-for="v in 8" :key="v" title="菜单四"></mt-cell>
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
 
         <mt-tabbar v-model="selected">
             <mt-tab-item id="0">
-                <img src="../assets/images/100x100.png" slot="icon" alt="" />
+                <img src="./images/100x100.png" slot="icon" alt="" />
                 菜单一
             </mt-tab-item>
 
             <mt-tab-item id="1">
-                <img src="../assets/images/100x100.png" slot="icon" alt="" />
+                <img src="./images/100x100.png" slot="icon" alt="" />
                 菜单二
             </mt-tab-item>
 
             <mt-tab-item id="2">
-                <img src="../assets/images/100x100.png" slot="icon" alt="" />
+                <img src="./images/100x100.png" slot="icon" alt="" />
                 菜单三
             </mt-tab-item>
 
             <mt-tab-item id="3">
-                <img src="../assets/images/100x100.png" slot="icon" alt="" />
+                <img src="./images/100x100.png" slot="icon" alt="" />
                 菜单四
             </mt-tab-item>
         </mt-tabbar>
@@ -82,5 +84,10 @@
         right: 0;
         bottom: 55px;
         padding-top: 0;
+    }
+
+    .cut {
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 </style>

@@ -10,7 +10,7 @@
             <mt-cell title="标题文字" icon="more" :isLink="false">带 icon</mt-cell>
             <mt-cell title="标题文字" :isLink="false">
                 <span>icon 是图片</span>
-                <img slot="icon" src="../assets/images/100x100.png" width="24" height="24">
+                <img slot="icon" src="./images/100x100.png" width="24" height="24">
             </mt-cell>
             <mt-cell title="标题文字">带链接</mt-cell>
             <mt-cell title="标题文字">

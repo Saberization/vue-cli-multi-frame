@@ -30,9 +30,9 @@
       </div>
 
       <div class="page-button-group">
-        <mt-button icon=w"more">按钮带图标</mt-button>
+        <mt-button icon="more">按钮带图标</mt-button>
         <mt-button>
-          <img src="@assets/images/100x100.png" height="20" width="20" alt="" slot="icon">
+          <img src="./images/100x100.png" height="20" width="20" alt="" slot="icon">
           带自定义图标
         </mt-button>
       </div>
