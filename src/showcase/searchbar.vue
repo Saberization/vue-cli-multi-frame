@@ -1,18 +1,34 @@
 <template>
   <div class="container">
-    <searchbar v-model="searchValue" @enter="enter"></searchbar>
+    <mt-header title="Searchbar">
+      <mt-button
+        icon="back"
+        slot="left"
+      >返回</mt-button>
+    </mt-header>
+
+    <div class="mt-content">
+      <searchbar
+        v-model="searchValue"
+        @enter="enter"
+      ></searchbar>
+    </div>
   </div>
 </template>
 
 <script>
-import Searchbar from '@components/searchbar'
+import Header from "@components/header";
+import Button from "@components/button";
+import Searchbar from "@components/searchbar";
 
 const Console = console;
 
 export default {
-  name: 'Search',
+  name: "Search",
   components: {
-    "searchbar": Searchbar
+    "mt-header": Header,
+    "mt-button": Button,
+    searchbar: Searchbar
   },
   data() {
     return {
@@ -24,5 +40,11 @@ export default {
       Console.log(this.searchValue);
     }
   }
-}
+};
 </script>
+
+<style scoped>
+  .mt-content {
+    padding-top: 40px;
+  }
+</style>
