@@ -116,7 +116,8 @@ export default {
             },
             {
               title: 'Tabbar',
-              icon: 'tabbar'
+              icon: 'tabbar',
+              to: '/tabbar'
             },
             {
               title: 'Navbar',

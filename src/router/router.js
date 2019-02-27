@@ -21,6 +21,7 @@ import Cell from '@showcase/cell'
 import CellSwipe from '@showcase/cellswipe'
 import Spinner from '@showcase/spinner'
 import Navbar from '@showcase/navbar'
+import Tabbar from '@showcase/tabbar'
 
 const routes = [{
   path: '*',
@@ -94,6 +95,9 @@ const routes = [{
 }, {
   path: '/navbar',
   component: Navbar
+}, {
+  path: '/tabbar',
+  component: Tabbar
 }];
 
 export default routes
