@@ -20,6 +20,7 @@ import TabContainer from '@showcase/tabcontainer'
 import Cell from '@showcase/cell'
 import CellSwipe from '@showcase/cellswipe'
 import Spinner from '@showcase/spinner'
+import Navbar from '@showcase/navbar'
 
 const routes = [{
   path: '*',
@@ -90,6 +91,9 @@ const routes = [{
 }, {
   path: '/spinner',
   component: Spinner
+}, {
+  path: '/navbar',
+  component: Navbar
 }];
 
 export default routes

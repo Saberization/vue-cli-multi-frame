@@ -120,7 +120,8 @@ export default {
             },
             {
               title: 'Navbar',
-              icon: 'navbar'
+              icon: 'navbar',
+              to: '/navbar'
             },
             {
               title: 'Button',
