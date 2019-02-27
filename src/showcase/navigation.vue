@@ -139,7 +139,8 @@ export default {
             },
             {
               title: 'Spinner',
-              icon: 'spinner'
+              icon: 'spinner',
+              to: '/spinner'
             },
             {
               title: 'TabContainer',

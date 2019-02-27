@@ -19,6 +19,7 @@ import PaletteButton from '@showcase/palettebutton'
 import TabContainer from '@showcase/tabcontainer'
 import Cell from '@showcase/cell'
 import CellSwipe from '@showcase/cellswipe'
+import Spinner from '@showcase/spinner'
 
 const routes = [{
   path: '*',
@@ -86,6 +87,9 @@ const routes = [{
 }, {
   path: '/cellswipe',
   component: CellSwipe
+}, {
+  path: '/spinner',
+  component: Spinner
 }];
 
 export default routes
