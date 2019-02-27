@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <mt-header title="Lazy Load">
+        <mt-header title="TabContainer">
             <mt-button
                 icon="back"
                 slot="left"
