@@ -50,6 +50,11 @@ export default {
               to: '/pulltorefresh'
             },
             {
+              title: 'TabPullrefresh',
+              icon: 'pull-up',
+              to: '/tabpullrefresh'
+            },
+            {
               title: 'Message box',
               icon: 'message-box',
               to: '/messagebox'

@@ -22,6 +22,7 @@ import CellSwipe from '@showcase/cellswipe'
 import Spinner from '@showcase/spinner'
 import Navbar from '@showcase/navbar'
 import Tabbar from '@showcase/tabbar'
+import TabPullrefresh from '@showcase/tabpullrefresh'
 
 const routes = [{
   path: '*',
@@ -98,6 +99,9 @@ const routes = [{
 }, {
   path: '/tabbar',
   component: Tabbar
+}, {
+  path: '/tabpullrefresh',
+  component: TabPullrefresh
 }];
 
 export default routes

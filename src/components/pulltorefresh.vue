@@ -125,9 +125,9 @@
             PullToRefresh (options) {
                 Object.assign(this.options, options);
 
-                this.pageIndex = options.initPageIndex;
+                this.pageIndex = this.options.initPageIndex;
                 // 设置 ajaxSetting
-                this.setAjaxSetting(options.ajaxSettings);
+                this.setAjaxSetting(this.options.ajaxSettings);
                 // 请求下拉数据
                 this.dataRequest(this.pageIndex);
             },
